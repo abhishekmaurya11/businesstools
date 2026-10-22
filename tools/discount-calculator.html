@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Discount Calculator — Sale Price & Savings | GoSoping</title>
+<meta name="description" content="Instantly calculate discount amount, final sale price, and total savings from any original price and discount percentage. Free, browser-based, no sign-up.">
+<link rel="canonical" href="https://gosoping.com/tools/discount-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoSoping">
+<meta property="og:title" content="Discount Calculator — Sale Price & Savings">
+<meta property="og:description" content="Calculate discount amount, final sale price, and total savings from any percentage.">
+<meta property="og:url" content="https://gosoping.com/tools/discount-calculator.html">
+<meta property="og:image" content="https://gosoping.com/assets/images/og.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Discount Calculator | GoSoping">
+<meta name="twitter:description" content="Sale price and savings from any discount percentage.">
+<meta name="twitter:image" content="https://gosoping.com/assets/images/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Discount Calculator","url":"https://gosoping.com/tools/discount-calculator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"Calculate discount amount, final sale price, and total savings from any discount percentage.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gosoping.com/"},{"@type":"ListItem","position":2,"name":"Discount Calculator","item":"https://gosoping.com/tools/discount-calculator.html"}]}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo" aria-label="GoSoping home">Go<span>Soping</span></a>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="primaryNav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="profit-calculator.html">Profit</a></li>
+        <li><a href="discount-calculator.html" aria-current="page">Discount</a></li>
+        <li><a href="pricing-calculator.html">Pricing</a></li>
+        <li><a href="invoice-generator.html">Invoice</a></li>
+        <li><a href="product-description-generator.html">Description</a></li>
+        <li><a href="../pages/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Discount Calculator</li></ol></nav>
+    <div class="page-head">
+      <h1>Discount Calculator</h1>
+      <p class="lead">Enter any original price and discount percentage to instantly see the discount amount, final sale price, and total savings. Works for shopping, pricing tests, and marketplace promotions — all in your browser.</p>
+    </div>
+
+    <div class="tool-layout">
+      <section class="panel" aria-labelledby="discFormTitle">
+        <h2 id="discFormTitle">Enter price and discount</h2>
+        <form id="discountForm" novalidate>
+          <div class="field"><label for="originalPrice">Original price</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="originalPrice" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required></div><p class="error-msg" id="originalPrice-error"></p></div>
+          <div class="field"><label for="discountPercent">Discount (%)</label><div class="input-wrap has-suffix"><span class="suffix">%</span><input id="discountPercent" type="number" inputmode="decimal" min="0" max="100" step="0.01" placeholder="0" required></div><p class="hint">Any value from 0 to 100.</p><p class="error-msg" id="discountPercent-error"></p></div>
+          <div class="form-actions"><button type="submit" class="btn btn-primary">Calculate discount</button><button type="reset" class="btn btn-secondary">Reset</button></div>
+        </form>
+      </section>
+      <section aria-live="polite">
+        <div class="result-card">
+          <div id="discResultEmpty" class="result-empty">Enter an original price and discount to see the sale price.</div>
+          <div id="discResultBody" hidden>
+            <div class="result-main"><p class="label">Final sale price</p><p class="value" id="discFinalPrice">₹0.00</p><p class="result-note" id="discNote"></p></div>
+            <div class="result-rows">
+              <div class="result-row"><span class="k">Original price</span><span class="v" id="discOriginal">₹0.00</span></div>
+              <div class="result-row"><span class="k">Discount percentage</span><span class="v" id="discPercent">0%</span></div>
+              <div class="result-row total"><span class="k">You save</span><span class="v" id="discSavings">₹0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ad-slot" aria-hidden="true">Advertisement</div>
+
+    <article class="prose">
+      <h2>How to use the discount calculator</h2>
+      <ol><li>Enter the original listed price before any discount.</li><li>Enter the discount percentage (0 to 100).</li><li>Read the discount amount, final sale price, and total savings instantly.</li></ol>
+      <h2>Formula</h2>
+      <div class="formula">Discount amount = original price × discount % ÷ 100</div>
+      <div class="formula">Final sale price = original price − discount amount</div>
+      <div class="formula">Savings = discount amount</div>
+      <h2>Worked example</h2>
+      <p>A shirt is listed at ₹1,200 with a 25% discount.</p>
+      <table><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody>
+        <tr><td>Original price</td><td>₹1,200.00</td></tr>
+        <tr><td>Discount (25%)</td><td>₹300.00</td></tr>
+        <tr><td><strong>Final sale price</strong></td><td><strong>₹900.00</strong></td></tr>
+        <tr><td>You save</td><td>₹300.00</td></tr>
+      </tbody></table>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Can the discount be over 100%?</summary><div class="faq-body"><p>No. This calculator accepts values from 0% to 100%. A 100% discount makes the final price zero.</p></div></details>
+        <details><summary>Does it work with any currency?</summary><div class="faq-body"><p>Yes. The math is currency-agnostic; results are displayed in ₹. Read the numbers as your local currency if you prefer.</p></div></details>
+        <details><summary>What about stacked discounts?</summary><div class="faq-body"><p>Apply them one at a time. If a product has 20% off and then an extra 10%, run the result of the first discount as the original price of the second.</p></div></details>
+        <details><summary>Does it include tax?</summary><div class="faq-body"><p>No. Enter the pre-tax price to see the discount before tax. Add tax separately if needed.</p></div></details>
+      </div>
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="profit-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><h3>E-commerce Profit Calculator</h3><p>Check net profit, margin, and break-even price per sale.</p><span class="tool-link">Open →</span></a>
+        <a href="pricing-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Product Pricing Calculator</h3><p>Find the price that hits your target margin.</p><span class="tool-link">Open →</span></a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Go<span style="color:#60a5fa">Soping</span></a><p>Free online business tools for e-commerce sellers, small businesses, and shoppers.</p></div>
+      <div><h3>Tools</h3><ul>
+        <li><a href="profit-calculator.html">Profit Calculator</a></li>
+        <li><a href="discount-calculator.html">Discount Calculator</a></li>
+        <li><a href="pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="invoice-generator.html">Invoice Generator</a></li>
+        <li><a href="product-description-generator.html">Description Generator</a></li>
+      </ul></div>
+      <div><h3>Company</h3><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href="../pages/privacy-policy.html">Privacy</a></li><li><a href="../pages/terms.html">Terms</a></li><li><a href="../pages/disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2026</span> GoSoping.</p><p>Made for sellers who do the math.</p></div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/discount-calculator.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>E-commerce Profit Calculator — Net Profit, Margin & ROI | GoSoping</title>
+<meta name="description" content="Calculate net profit per sale, profit margin, ROI, and break-even price after product cost, shipping, ads, and marketplace fees. Free, browser-based, no sign-up.">
+<link rel="canonical" href="https://gosoping.com/tools/profit-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoSoping">
+<meta property="og:title" content="E-commerce Profit Calculator — Net Profit, Margin & ROI">
+<meta property="og:description" content="Calculate net profit, profit margin, ROI, and break-even price per sale after all costs and fees.">
+<meta property="og:url" content="https://gosoping.com/tools/profit-calculator.html">
+<meta property="og:image" content="https://gosoping.com/assets/images/og.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="E-commerce Profit Calculator | GoSoping">
+<meta name="twitter:description" content="Net profit, margin, ROI, and break-even price after fees and ads.">
+<meta name="twitter:image" content="https://gosoping.com/assets/images/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"E-commerce Profit Calculator","url":"https://gosoping.com/tools/profit-calculator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"Calculate net profit, profit margin, ROI, and break-even price per sale after marketplace fees and advertising costs.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gosoping.com/"},{"@type":"ListItem","position":2,"name":"Profit Calculator","item":"https://gosoping.com/tools/profit-calculator.html"}]}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo" aria-label="GoSoping home">Go<span>Soping</span></a>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="primaryNav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="profit-calculator.html" aria-current="page">Profit</a></li>
+        <li><a href="discount-calculator.html">Discount</a></li>
+        <li><a href="pricing-calculator.html">Pricing</a></li>
+        <li><a href="invoice-generator.html">Invoice</a></li>
+        <li><a href="product-description-generator.html">Description</a></li>
+        <li><a href="../pages/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Profit Calculator</li></ol></nav>
+    <div class="page-head">
+      <h1>E-commerce Profit Calculator</h1>
+      <p class="lead">Find out exactly how much profit you make on each sale after product cost, packaging, shipping, advertising, and marketplace fees. The calculator also shows your profit margin, ROI, and the minimum selling price you need to break even.</p>
+    </div>
+
+    <div class="tool-layout">
+      <section class="panel" aria-labelledby="profitFormTitle">
+        <h2 id="profitFormTitle">Enter your numbers</h2>
+        <form id="profitForm" novalidate>
+          <div class="field"><label for="cost">Product purchase cost</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required></div><p class="error-msg" id="cost-error"></p></div>
+          <div class="field-row">
+            <div class="field"><label for="packaging">Packaging cost</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="packaging" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div><p class="error-msg" id="packaging-error"></p></div>
+            <div class="field"><label for="shipping">Shipping cost</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="shipping" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div><p class="error-msg" id="shipping-error"></p></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="other">Other expenses</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="other" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div><p class="error-msg" id="other-error"></p></div>
+            <div class="field"><label for="ad">Advertising cost per sale</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="ad" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div><p class="error-msg" id="ad-error"></p></div>
+          </div>
+          <div class="field"><label for="price">Selling price</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="price" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required></div><p class="error-msg" id="price-error"></p></div>
+          <div class="field"><label for="fee">Marketplace / payment fee (%)</label><div class="input-wrap has-suffix"><span class="suffix">%</span><input id="fee" type="number" inputmode="decimal" min="0" max="100" step="0.01" placeholder="0"></div><p class="hint">Commission + payment gateway, e.g. 15 for Amazon or 3 for Razorpay.</p><p class="error-msg" id="fee-error"></p></div>
+          <div class="form-actions"><button type="submit" class="btn btn-primary">Calculate profit</button><button type="reset" class="btn btn-secondary">Reset</button></div>
+        </form>
+      </section>
+
+      <section aria-live="polite">
+        <div class="result-card">
+          <div id="profitResultEmpty" class="result-empty">Enter your product cost and selling price to see your profit.</div>
+          <div id="profitResultBody" hidden>
+            <div class="result-main"><p class="label" id="profitNetLabel">Net profit per sale</p><p class="value" id="profitNet">₹0.00</p><p class="result-note" id="profitNote"></p></div>
+            <div class="result-rows">
+              <div class="result-row"><span class="k">Selling price</span><span class="v" id="profitPrice">₹0.00</span></div>
+              <div class="result-row"><span class="k">Marketplace fees</span><span class="v" id="profitFees">₹0.00</span></div>
+              <div class="result-row total"><span class="k">Total cost (incl. ads)</span><span class="v" id="profitTotalCost">₹0.00</span></div>
+              <div class="result-row"><span class="k">Profit margin</span><span class="v" id="profitMargin">0%</span></div>
+              <div class="result-row"><span class="k">Return on investment</span><span class="v" id="profitRoi">0%</span></div>
+              <div class="result-row"><span class="k">Break-even selling price</span><span class="v" id="profitBreakEven">₹0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ad-slot" aria-hidden="true">Advertisement</div>
+
+    <article class="prose">
+      <h2>How to use the profit calculator</h2>
+      <ol>
+        <li>Enter the amount you pay for one unit of the product.</li>
+        <li>Add packaging, shipping, and any other variable cost you incur per sale.</li>
+        <li>Enter the price the customer pays, including tax if you remit it.</li>
+        <li>Set the marketplace or payment gateway fee percentage (e.g. 15 for Amazon, 3 for Razorpay).</li>
+        <li>Add your advertising cost per sale — the average amount you spend to acquire one customer.</li>
+        <li>Read net profit, margin, ROI, and break-even price instantly. Results update as you type.</li>
+      </ol>
+      <h2>Formulas used</h2>
+      <div class="formula">Total cost = product + packaging + shipping + other + advertising</div>
+      <div class="formula">Marketplace fees = selling price × fee % ÷ 100</div>
+      <div class="formula">Net profit = selling price − marketplace fees − total cost</div>
+      <div class="formula">Profit margin = net profit ÷ selling price × 100</div>
+      <div class="formula">ROI = net profit ÷ total cost × 100</div>
+      <div class="formula">Break-even price = total cost ÷ (1 − fee % ÷ 100)</div>
+      <h2>Worked example</h2>
+      <p>A seller buys a product for ₹400, spends ₹30 on packaging, ₹60 on shipping, ₹40 on ads, and sells it for ₹900 on a marketplace that charges 15%.</p>
+      <table><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody>
+        <tr><td>Product cost</td><td>₹400.00</td></tr>
+        <tr><td>Packaging</td><td>₹30.00</td></tr>
+        <tr><td>Shipping</td><td>₹60.00</td></tr>
+        <tr><td>Advertising</td><td>₹40.00</td></tr>
+        <tr><td>Total cost</td><td>₹530.00</td></tr>
+        <tr><td>Marketplace fees (15%)</td><td>₹135.00</td></tr>
+        <tr><td><strong>Net profit</strong></td><td><strong>₹235.00</strong></td></tr>
+        <tr><td>Profit margin</td><td>26.11%</td></tr>
+        <tr><td>ROI</td><td>44.34%</td></tr>
+        <tr><td>Break-even price</td><td>₹623.53</td></tr>
+      </tbody></table>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Does the calculator include GST?</summary><div class="faq-body"><p>It treats the selling price you enter as the amount you actually keep before fees. If you collect GST separately and remit it, enter the price excluding GST.</p></div></details>
+        <details><summary>What is "advertising cost per sale"?</summary><div class="faq-body"><p>The average amount you spend on ads for every order you receive. If you spend ₹5,000 on ads and get 100 sales, your ad cost per sale is ₹50.</p></div></details>
+        <details><summary>Why is my ROI different from margin?</summary><div class="faq-body"><p>Margin is profit divided by selling price. ROI is profit divided by total cost. They describe the same profit from different angles.</p></div></details>
+        <details><summary>What does "break-even price" mean?</summary><div class="faq-body"><p>The selling price at which net profit is exactly zero, after all costs and fees. Any price above it makes a profit.</p></div></details>
+      </div>
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="pricing-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Product Pricing Calculator</h3><p>Work backwards from a target margin to a recommended price.</p><span class="tool-link">Open →</span></a>
+        <a href="discount-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></span><h3>Discount Calculator</h3><p>See final sale price and savings from any discount.</p><span class="tool-link">Open →</span></a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Go<span style="color:#60a5fa">Soping</span></a><p>Free online business tools for e-commerce sellers, small businesses, and shoppers.</p></div>
+      <div><h3>Tools</h3><ul>
+        <li><a href="profit-calculator.html">Profit Calculator</a></li>
+        <li><a href="discount-calculator.html">Discount Calculator</a></li>
+        <li><a href="pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="invoice-generator.html">Invoice Generator</a></li>
+        <li><a href="product-description-generator.html">Description Generator</a></li>
+      </ul></div>
+      <div><h3>Company</h3><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href="../pages/privacy-policy.html">Privacy</a></li><li><a href="../pages/terms.html">Terms</a></li><li><a href="../pages/disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2026</span> GoSoping.</p><p>Made for sellers who do the math.</p></div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/profit-calculator.js" defer></script>
+</body>
+</html>

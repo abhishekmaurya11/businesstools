@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Free Invoice Generator — Print or Save as PDF | GoSoping</title>
+<meta name="description" content="Create clean, printable invoices with line items, discount, tax, and totals. Print or save as PDF in your browser. No sign-up. Data stays on your device.">
+<link rel="canonical" href="https://gosoping.com/tools/invoice-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoSoping">
+<meta property="og:title" content="Free Invoice Generator — Print or Save as PDF">
+<meta property="og:description" content="Create print-ready invoices with line items, tax, and totals.">
+<meta property="og:url" content="https://gosoping.com/tools/invoice-generator.html">
+<meta property="og:image" content="https://gosoping.com/assets/images/og.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Invoice Generator | GoSoping">
+<meta name="twitter:description" content="Print-ready invoices with line items, tax, and totals.">
+<meta name="twitter:image" content="https://gosoping.com/assets/images/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Invoice Generator","url":"https://gosoping.com/tools/invoice-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"Create print-ready invoices with line items, discount, tax, and totals.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gosoping.com/"},{"@type":"ListItem","position":2,"name":"Invoice Generator","item":"https://gosoping.com/tools/invoice-generator.html"}]}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+@media print {
+  body { background: #fff !important; }
+  body * { visibility: hidden !important; }
+  #invoicePreview, #invoicePreview * { visibility: visible !important; }
+  #invoicePreview { position: absolute; left: 0; top: 0; width: 100%; border: none !important; box-shadow: none !important; padding: 0; margin: 0; border-radius: 0; }
+  .no-print { display: none !important; }
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="site-header no-print">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo" aria-label="GoSoping home">Go<span>Soping</span></a>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="primaryNav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="profit-calculator.html">Profit</a></li>
+        <li><a href="discount-calculator.html">Discount</a></li>
+        <li><a href="pricing-calculator.html">Pricing</a></li>
+        <li><a href="invoice-generator.html" aria-current="page">Invoice</a></li>
+        <li><a href="product-description-generator.html">Description</a></li>
+        <li><a href="../pages/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs no-print" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Invoice Generator</li></ol></nav>
+    <div class="page-head no-print">
+      <h1>Invoice Generator</h1>
+      <p class="lead">Create a clean, printable invoice in your browser. Fill in your details and line items, then print or save as PDF using your browser's print dialog. Nothing is uploaded anywhere — all data stays on your device.</p>
+    </div>
+
+    <div class="tool-layout no-print">
+      <section class="panel" aria-labelledby="invFormTitle">
+        <h2 id="invFormTitle">Invoice details</h2>
+        <form id="invoiceForm" novalidate>
+          <h3 style="font-size:.9rem;color:var(--text-2);margin:.5rem 0 .75rem">Your business</h3>
+          <div class="field"><label for="invSellerName">Business name</label><input id="invSellerName" type="text" placeholder="Your Business Pvt Ltd"></div>
+          <div class="field"><label for="invSellerAddr">Address</label><textarea id="invSellerAddr" rows="2" placeholder="123 Main Street, City, PIN"></textarea></div>
+          <div class="field-row">
+            <div class="field"><label for="invSellerEmail">Email</label><input id="invSellerEmail" type="email" placeholder="you@business.com"></div>
+            <div class="field"><label for="invSellerPhone">Phone</label><input id="invSellerPhone" type="text" placeholder="+91 90000 00000"></div>
+          </div>
+
+          <h3 style="font-size:.9rem;color:var(--text-2);margin:1.25rem 0 .75rem">Bill to</h3>
+          <div class="field"><label for="invCustomerName">Customer name</label><input id="invCustomerName" type="text" placeholder="Customer name"></div>
+          <div class="field"><label for="invCustomerAddr">Address</label><textarea id="invCustomerAddr" rows="2" placeholder="Customer address"></textarea></div>
+          <div class="field"><label for="invCustomerEmail">Email</label><input id="invCustomerEmail" type="email" placeholder="customer@email.com"></div>
+
+          <h3 style="font-size:.9rem;color:var(--text-2);margin:1.25rem 0 .75rem">Invoice info</h3>
+          <div class="field-row">
+            <div class="field"><label for="invNumber">Invoice number</label><input id="invNumber" type="text" value="INV-001"></div>
+            <div class="field"><label for="invDate">Date</label><input id="invDate" type="date"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="invDue">Due date</label><input id="invDue" type="date"></div>
+            <div class="field"><label for="invStatus">Status</label>
+              <select id="invStatus"><option value="Unpaid">Unpaid</option><option value="Paid">Paid</option><option value="Draft">Draft</option></select>
+            </div>
+          </div>
+
+          <h3 style="font-size:.9rem;color:var(--text-2);margin:1.25rem 0 .75rem">Line items</h3>
+          <div id="itemRows"></div>
+          <button type="button" id="addItemBtn" class="btn btn-secondary btn-sm" style="margin-top:.5rem">+ Add item</button>
+
+          <h3 style="font-size:.9rem;color:var(--text-2);margin:1.5rem 0 .75rem">Adjustments</h3>
+          <div class="field-row">
+            <div class="field"><label for="invDiscount">Discount</label>
+              <div class="input-group"><input id="invDiscount" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0"><select id="invDiscountType"><option value="pct">%</option><option value="flat">₹</option></select></div>
+            </div>
+            <div class="field"><label for="invTax">Tax</label>
+              <div class="input-group"><input id="invTax" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0"><select id="invTaxType"><option value="pct">%</option><option value="flat">₹</option></select></div>
+            </div>
+          </div>
+
+          <div class="field"><label for="invNote">Note to customer (optional)</label><textarea id="invNote" rows="2" placeholder="Thank you for your business!"></textarea></div>
+
+          <div class="form-actions">
+            <button type="button" id="printBtn" class="btn btn-primary">🖨 Print / Save as PDF</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+          <p class="hint">Choose "Save as PDF" in your browser's print dialog to download a copy. This invoice is a template — verify tax rules and legal requirements for your jurisdiction.</p>
+        </form>
+      </section>
+
+      <section aria-label="Invoice preview" aria-live="polite">
+        <div class="invoice-preview" id="invoicePreview">
+          <div class="inv-header">
+            <div>
+              <h2>INVOICE</h2>
+              <p><strong>#</strong> <span id="dispNumber">INV-001</span></p>
+              <p><strong>Date:</strong> <span id="dispDate">—</span></p>
+              <p><strong>Due:</strong> <span id="dispDue">—</span></p>
+              <p><strong>Status:</strong> <span id="dispStatus">Unpaid</span></p>
+            </div>
+            <div style="text-align:right">
+              <h3 id="dispSellerName">Your Business</h3>
+              <p id="dispSellerAddr"></p>
+              <p id="dispSellerEmail"></p>
+              <p id="dispSellerPhone"></p>
+            </div>
+          </div>
+          <div class="inv-billto">
+            <h3>Bill to</h3>
+            <p><strong id="dispCustomerName">Customer name</strong></p>
+            <p id="dispCustomerAddr"></p>
+            <p id="dispCustomerEmail"></p>
+          </div>
+          <table class="inv-items-table">
+            <thead><tr><th>Description</th><th>Qty</th><th>Unit price</th><th>Amount</th></tr></thead>
+            <tbody id="dispItems"></tbody>
+          </table>
+          <div class="inv-totals">
+            <div><span>Subtotal</span><span id="dispSubtotal">₹0.00</span></div>
+            <div><span>Discount</span><span id="dispDiscount">₹0.00</span></div>
+            <div><span>Tax</span><span id="dispTax">₹0.00</span></div>
+            <div class="grand"><span>Grand total</span><span id="dispGrand">₹0.00</span></div>
+          </div>
+          <div class="inv-note" id="dispNote"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ad-slot no-print" aria-hidden="true">Advertisement</div>
+
+    <article class="prose no-print">
+      <h2>How to use the invoice generator</h2>
+      <ol>
+        <li>Enter your business name, address, and contact details.</li>
+        <li>Add the customer's billing information.</li>
+        <li>Set the invoice number, date, and due date.</li>
+        <li>Add each line item with a description, quantity, and unit price. Line totals update as you type.</li>
+        <li>Optionally apply a discount and tax — each can be a percentage or a flat amount.</li>
+        <li>Click <strong>Print / Save as PDF</strong>. In the print dialog, choose "Save as PDF" to download.</li>
+      </ol>
+      <h2>Totals formula</h2>
+      <div class="formula">Line total = quantity × unit price</div>
+      <div class="formula">Subtotal = sum of all line totals</div>
+      <div class="formula">Discount (percentage) = subtotal × discount % ÷ 100</div>
+      <div class="formula">Discounted subtotal = subtotal − discount amount</div>
+      <div class="formula">Tax (percentage) = discounted subtotal × tax % ÷ 100</div>
+      <div class="formula">Grand total = discounted subtotal + tax amount</div>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Is this tax-compliant in my country?</summary><div class="faq-body"><p>No guarantee. This is a general-purpose invoice template. Rules for GST, VAT, and sales tax vary by jurisdiction and may require specific fields, numbering, and wording. Check the requirements of your tax authority before using this for official tax filing.</p></div></details>
+        <details><summary>Does the invoice save automatically?</summary><div class="faq-body"><p>No. Data lives in your browser's memory only while the page is open. Print or save as PDF to keep a copy — refreshing the page will clear it.</p></div></details>
+        <details><summary>How do I make a PDF?</summary><div class="faq-body"><p>Click <strong>Print / Save as PDF</strong> and choose "Save as PDF" or "Microsoft Print to PDF" in your browser's print dialog.</p></div></details>
+        <details><summary>Does the print view include the form?</summary><div class="faq-body"><p>No. The print stylesheet hides everything except the invoice preview, so the printed document looks like a clean invoice.</p></div></details>
+        <details><summary>Can I edit the invoice after printing?</summary><div class="faq-body"><p>Yes. Change any field and click print again. The preview updates live.</p></div></details>
+      </div>
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="profit-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><h3>Profit Calculator</h3><p>Know your per-sale profit before you invoice it.</p><span class="tool-link">Open →</span></a>
+        <a href="pricing-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Pricing Calculator</h3><p>Set the line price from your target margin.</p><span class="tool-link">Open →</span></a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer no-print">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Go<span style="color:#60a5fa">Soping</span></a><p>Free online business tools for e-commerce sellers, small businesses, and shoppers.</p></div>
+      <div><h3>Tools</h3><ul>
+        <li><a href="profit-calculator.html">Profit Calculator</a></li>
+        <li><a href="discount-calculator.html">Discount Calculator</a></li>
+        <li><a href="pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="invoice-generator.html">Invoice Generator</a></li>
+        <li><a href="product-description-generator.html">Description Generator</a></li>
+      </ul></div>
+      <div><h3>Company</h3><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href="../pages/privacy-policy.html">Privacy</a></li><li><a href="../pages/terms.html">Terms</a></li><li><a href="../pages/disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2026</span> GoSoping.</p><p>Made for sellers who do the math.</p></div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/invoice-generator.js" defer></script>
+</body>
+</html>

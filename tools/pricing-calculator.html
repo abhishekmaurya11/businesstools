@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Product Pricing Calculator — Recommended Selling Price | GoSoping</title>
+<meta name="description" content="Find the selling price that hits your target profit margin after marketplace fees and all costs. Free, browser-based pricing calculator with clear formulas.">
+<link rel="canonical" href="https://gosoping.com/tools/pricing-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoSoping">
+<meta property="og:title" content="Product Pricing Calculator — Recommended Selling Price">
+<meta property="og:description" content="Find the selling price that hits your target profit margin after marketplace fees.">
+<meta property="og:url" content="https://gosoping.com/tools/pricing-calculator.html">
+<meta property="og:image" content="https://gosoping.com/assets/images/og.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Product Pricing Calculator | GoSoping">
+<meta name="twitter:description" content="Recommended selling price after fees and target margin.">
+<meta name="twitter:image" content="https://gosoping.com/assets/images/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Product Pricing Calculator","url":"https://gosoping.com/tools/pricing-calculator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"Find the recommended selling price after marketplace fees and target profit margin.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gosoping.com/"},{"@type":"ListItem","position":2,"name":"Pricing Calculator","item":"https://gosoping.com/tools/pricing-calculator.html"}]}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo" aria-label="GoSoping home">Go<span>Soping</span></a>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="primaryNav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="profit-calculator.html">Profit</a></li>
+        <li><a href="discount-calculator.html">Discount</a></li>
+        <li><a href="pricing-calculator.html" aria-current="page">Pricing</a></li>
+        <li><a href="invoice-generator.html">Invoice</a></li>
+        <li><a href="product-description-generator.html">Description</a></li>
+        <li><a href="../pages/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Pricing Calculator</li></ol></nav>
+    <div class="page-head">
+      <h1>Product Pricing Calculator</h1>
+      <p class="lead">Work backwards from your target profit margin to find the selling price that gets you there — after marketplace fees and every cost. This is the reverse of the profit calculator, and it's the one sellers need when listing a new product.</p>
+    </div>
+
+    <div class="tool-layout">
+      <section class="panel" aria-labelledby="priceFormTitle">
+        <h2 id="priceFormTitle">Enter your costs and target</h2>
+        <form id="pricingForm" novalidate>
+          <div class="field"><label for="pCost">Product cost</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="pCost" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required></div><p class="error-msg" id="pCost-error"></p></div>
+          <div class="field"><label for="pPackaging">Packaging and shipping expenses</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="pPackaging" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div><p class="error-msg" id="pPackaging-error"></p></div>
+          <div class="field"><label for="pOther">Other expenses</label><div class="input-wrap has-prefix"><span class="prefix">₹</span><input id="pOther" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div><p class="error-msg" id="pOther-error"></p></div>
+          <div class="field-row">
+            <div class="field"><label for="pFee">Marketplace fee (%)</label><div class="input-wrap has-suffix"><span class="suffix">%</span><input id="pFee" type="number" inputmode="decimal" min="0" max="99" step="0.01" placeholder="0"></div><p class="error-msg" id="pFee-error"></p></div>
+            <div class="field"><label for="pMargin">Target profit margin (%)</label><div class="input-wrap has-suffix"><span class="suffix">%</span><input id="pMargin" type="number" inputmode="decimal" min="0" max="99" step="0.01" placeholder="0" required></div><p class="error-msg" id="pMargin-error"></p></div>
+          </div>
+          <p class="hint">Fee % + margin % must be less than 100%.</p>
+          <div class="form-actions"><button type="submit" class="btn btn-primary">Calculate price</button><button type="reset" class="btn btn-secondary">Reset</button></div>
+        </form>
+      </section>
+      <section aria-live="polite">
+        <div class="result-card">
+          <div id="priceResultEmpty" class="result-empty">Enter your costs and target margin to see the recommended selling price.</div>
+          <div id="priceResultBody" hidden>
+            <div class="result-main"><p class="label">Recommended selling price</p><p class="value" id="priceRec">₹0.00</p><p class="result-note" id="priceNote"></p></div>
+            <div class="result-rows">
+              <div class="result-row"><span class="k">Total base cost</span><span class="v" id="priceTotalCost">₹0.00</span></div>
+              <div class="result-row"><span class="k">Marketplace fees at that price</span><span class="v" id="priceFees">₹0.00</span></div>
+              <div class="result-row"><span class="k">Profit at that price</span><span class="v" id="priceProfit">₹0.00</span></div>
+              <div class="result-row total"><span class="k">Achieved margin</span><span class="v" id="priceMargin">0%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ad-slot" aria-hidden="true">Advertisement</div>
+
+    <article class="prose">
+      <h2>How to use the pricing calculator</h2>
+      <ol>
+        <li>Enter your total cost per unit — product, packaging, shipping, and any other expenses.</li>
+        <li>Set the marketplace or payment gateway fee percentage you'll pay on the sale.</li>
+        <li>Set your desired profit margin (profit ÷ selling price).</li>
+        <li>Read the recommended selling price. It already accounts for the percentage fee.</li>
+      </ol>
+      <h2>Formula</h2>
+      <p>Because the marketplace fee is a percentage of the selling price, you can't just add margin on top of cost. You have to solve for price:</p>
+      <div class="formula">price = total cost ÷ (1 − fee % ÷ 100 − margin % ÷ 100)</div>
+      <p>This works only when fee % + margin % is less than 100. If they add up to 100% or more, no price can satisfy both — you'd need to lower one of them.</p>
+      <h2>Worked example</h2>
+      <p>Product cost ₹400, packaging + shipping ₹90, other ₹10, marketplace fee 15%, target margin 25%.</p>
+      <table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Total cost</td><td>₹500.00</td></tr>
+        <tr><td>Marketplace fee</td><td>15%</td></tr>
+        <tr><td>Target margin</td><td>25%</td></tr>
+        <tr><td>Denominator (1 − 0.15 − 0.25)</td><td>0.60</td></tr>
+        <tr><td><strong>Recommended price</strong></td><td><strong>₹833.33</strong></td></tr>
+        <tr><td>Fees at that price</td><td>₹125.00</td></tr>
+        <tr><td>Profit at that price</td><td>₹208.33</td></tr>
+      </tbody></table>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Why is the recommended price higher than cost ÷ (1 − margin)?</summary><div class="faq-body"><p>Because the marketplace takes a percentage of the selling price, not the cost. Adding margin on top of cost ignores that the fee grows with the price too. The formula accounts for both.</p></div></details>
+        <details><summary>What if fee % + margin % is 100% or more?</summary><div class="faq-body"><p>No finite price works. Every rupee of revenue would be eaten by fees and profit before costs are paid. Lower the fee or lower the target margin.</p></div></details>
+        <details><summary>Does this include advertising cost?</summary><div class="faq-body"><p>Yes if you add it to "other expenses". Advertising per sale behaves like a cost and is best treated as one for pricing decisions.</p></div></details>
+        <details><summary>Is the recommended price rounded?</summary><div class="faq-body"><p>It's shown to 2 decimal places. In practice, round up to a psychologically attractive price (e.g. ₹849 or ₹899) to keep a small buffer.</p></div></details>
+      </div>
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="profit-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><h3>E-commerce Profit Calculator</h3><p>Check net profit, margin, and break-even price at any selling price.</p><span class="tool-link">Open →</span></a>
+        <a href="discount-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></span><h3>Discount Calculator</h3><p>Test a discount before you launch it.</p><span class="tool-link">Open →</span></a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Go<span style="color:#60a5fa">Soping</span></a><p>Free online business tools for e-commerce sellers, small businesses, and shoppers.</p></div>
+      <div><h3>Tools</h3><ul>
+        <li><a href="profit-calculator.html">Profit Calculator</a></li>
+        <li><a href="discount-calculator.html">Discount Calculator</a></li>
+        <li><a href="pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="invoice-generator.html">Invoice Generator</a></li>
+        <li><a href="product-description-generator.html">Description Generator</a></li>
+      </ul></div>
+      <div><h3>Company</h3><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href="../pages/privacy-policy.html">Privacy</a></li><li><a href="../pages/terms.html">Terms</a></li><li><a href="../pages/disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2026</span> GoSoping.</p><p>Made for sellers who do the math.</p></div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/pricing-calculator.js" defer></script>
+</body>
+</html>

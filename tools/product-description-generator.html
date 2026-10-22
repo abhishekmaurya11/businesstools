@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Product Description Generator — Titles, Bullets & CTA | GoSoping</title>
+<meta name="description" content="Template-based product description generator. Get a title, description, feature bullets, and call to action from your product details. No AI, no sign-up.">
+<link rel="canonical" href="https://gosoping.com/tools/product-description-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GoSoping">
+<meta property="og:title" content="Product Description Generator — Titles, Bullets & CTA">
+<meta property="og:description" content="Generate a title, description, feature bullets, and CTA from your product details.">
+<meta property="og:url" content="https://gosoping.com/tools/product-description-generator.html">
+<meta property="og:image" content="https://gosoping.com/assets/images/og.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Product Description Generator | GoSoping">
+<meta name="twitter:description" content="Template-based titles, descriptions, bullets, and CTAs.">
+<meta name="twitter:image" content="https://gosoping.com/assets/images/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4ed8'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='34' font-weight='bold' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Product Description Generator","url":"https://gosoping.com/tools/product-description-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","description":"Template-based product title, description, feature bullets, and call to action generator.","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gosoping.com/"},{"@type":"ListItem","position":2,"name":"Product Description Generator","item":"https://gosoping.com/tools/product-description-generator.html"}]}</script>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo" aria-label="GoSoping home">Go<span>Soping</span></a>
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="primaryNav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="profit-calculator.html">Profit</a></li>
+        <li><a href="discount-calculator.html">Discount</a></li>
+        <li><a href="pricing-calculator.html">Pricing</a></li>
+        <li><a href="invoice-generator.html">Invoice</a></li>
+        <li><a href="product-description-generator.html" aria-current="page">Description</a></li>
+        <li><a href="../pages/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Product Description Generator</li></ol></nav>
+    <div class="page-head">
+      <h1>Product Description Generator</h1>
+      <p class="lead">Fill in a few details and get a title, description, feature bullets, and call to action. This is a <strong>template-based generator</strong> — not an AI tool. It combines your inputs with reusable copywriting patterns to give you a strong first draft you can edit.</p>
+    </div>
+
+    <div class="tool-layout">
+      <section class="panel" aria-labelledby="descFormTitle">
+        <h2 id="descFormTitle">Your product</h2>
+        <form id="descForm" novalidate>
+          <div class="field"><label for="dName">Product name</label><input id="dName" type="text" placeholder="Wireless Bluetooth Earbuds" required><p class="error-msg" id="dName-error"></p></div>
+          <div class="field"><label for="dCategory">Product category</label><input id="dCategory" type="text" placeholder="Electronics"></div>
+          <div class="field"><label for="dFeatures">Main features</label><textarea id="dFeatures" rows="3" placeholder="20-hour battery, noise cancellation, IPX5 water resistance, touch controls"></textarea><p class="hint">Separate each feature with a comma.</p></div>
+          <div class="field"><label for="dAudience">Target audience</label><input id="dAudience" type="text" placeholder="Commuters and gym-goers" required><p class="error-msg" id="dAudience-error"></p></div>
+          <div class="field"><label for="dTone">Tone of voice</label>
+            <select id="dTone">
+              <option value="professional">Professional</option>
+              <option value="friendly" selected>Friendly</option>
+              <option value="playful">Playful</option>
+              <option value="luxury">Luxury</option>
+              <option value="minimal">Minimal</option>
+            </select>
+          </div>
+          <div class="form-actions"><button type="submit" class="btn btn-primary">Generate description</button><button type="reset" class="btn btn-secondary">Reset</button></div>
+        </form>
+      </section>
+      <section aria-live="polite">
+        <div id="descEmpty" class="result-card"><div class="result-empty">Enter a product name and audience, then click Generate to see a title, description, feature bullets, and call to action.</div></div>
+        <div id="descOutput" class="generated-output" hidden></div>
+      </section>
+    </div>
+
+    <div class="ad-slot" aria-hidden="true">Advertisement</div>
+
+    <article class="prose">
+      <h2>How to use the generator</h2>
+      <ol>
+        <li>Enter your product name — this appears in every section.</li>
+        <li>Optionally add a category (used in the title).</li>
+        <li>List your main features, separated by commas.</li>
+        <li>Describe your target audience in a few words.</li>
+        <li>Pick a tone of voice. Try a few — each produces different copy patterns.</li>
+        <li>Click <strong>Generate description</strong>. Copy each section into your listing and edit it to fit your brand voice.</li>
+      </ol>
+      <h2>What this tool does — and doesn't do</h2>
+      <div class="callout"><p><strong>Template-based, not AI.</strong> This generator does not call any AI service. It fills reusable copywriting patterns with your inputs. The result is a first draft, not a finished listing — always review and edit before publishing.</p></div>
+      <h2>How the templates work</h2>
+      <p>Each tone has its own set of sentence patterns for the title, description, feature bullets, and call to action. Feature bullets are paired with short benefit phrases using keyword matching (e.g. "battery" → "for all-day use"). When no keyword matches, the feature itself becomes the bullet.</p>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>Is this really not AI?</summary><div class="faq-body"><p>Correct. No external API is called. The output is generated entirely in your browser using predefined templates. It never sends your product data anywhere.</p></div></details>
+        <details><summary>Can I edit the output?</summary><div class="faq-body"><p>Yes — and you should. Treat the output as a first draft. Every section has a copy button so you can paste it into your listing and refine it.</p></div></details>
+        <details><summary>Does it write in my brand voice?</summary><div class="faq-body"><p>It gets close if you pick the right tone, but it can't learn your specific voice. Edit word choices, add specifics, and remove anything that doesn't fit.</p></div></details>
+        <details><summary>Will it work for any product category?</summary><div class="faq-body"><p>Yes. The category is used mainly in the title. Feature and audience language is category-agnostic, so it works for electronics, apparel, home goods, and more.</p></div></details>
+        <details><summary>How many features should I enter?</summary><div class="faq-body"><p>Three to six is ideal. Too few and the bullets look thin; too many and the description gets crowded. Keep each feature short (2–6 words).</p></div></details>
+      </div>
+      <h2>Related tools</h2>
+      <div class="related-grid">
+        <a href="pricing-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Pricing Calculator</h3><p>Price your product to hit a target margin.</p><span class="tool-link">Open →</span></a>
+        <a href="profit-calculator.html" class="tool-card"><span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span><h3>Profit Calculator</h3><p>Verify profit after fees before you publish.</p><span class="tool-link">Open →</span></a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Go<span style="color:#60a5fa">Soping</span></a><p>Free online business tools for e-commerce sellers, small businesses, and shoppers.</p></div>
+      <div><h3>Tools</h3><ul>
+        <li><a href="profit-calculator.html">Profit Calculator</a></li>
+        <li><a href="discount-calculator.html">Discount Calculator</a></li>
+        <li><a href="pricing-calculator.html">Pricing Calculator</a></li>
+        <li><a href="invoice-generator.html">Invoice Generator</a></li>
+        <li><a href="product-description-generator.html">Description Generator</a></li>
+      </ul></div>
+      <div><h3>Company</h3><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/contact.html">Contact</a></li></ul></div>
+      <div><h3>Legal</h3><ul><li><a href="../pages/privacy-policy.html">Privacy</a></li><li><a href="../pages/terms.html">Terms</a></li><li><a href="../pages/disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; <span id="year">2026</span> GoSoping.</p><p>Made for sellers who do the math.</p></div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/description-generator.js" defer></script>
+</body>
+</html>
