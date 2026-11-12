@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Best Places to Sell · Gemini AI</title>
   <style>
     :root {
@@ -19,13 +19,7 @@
       --radius: 14px;
       --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
@@ -36,35 +30,21 @@
       align-items: center;
       padding: 24px 16px 64px;
     }
-
-    .app {
-      width: 100%;
-      max-width: 960px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
+    .app { width: 100%; max-width: 960px; }
+    header { text-align: center; margin-bottom: 28px; }
     header h1 {
       font-size: clamp(1.6rem, 4vw, 2.4rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 6px;
     }
-
-    header h1 span {
-      color: var(--accent);
-    }
-
+    header h1 span { color: var(--accent); }
     header p {
       color: var(--muted);
       font-size: 0.95rem;
       max-width: 600px;
       margin: 0 auto;
     }
-
     .input-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -73,13 +53,7 @@
       padding: 20px;
       margin-bottom: 24px;
     }
-
-    .input-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
+    .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
     .input-row input {
       flex: 1 1 240px;
       padding: 14px 16px;
@@ -90,12 +64,10 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       background: #fff;
     }
-
     .input-row input:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
     }
-
     .input-row button {
       padding: 14px 28px;
       background: var(--accent);
@@ -111,20 +83,9 @@
       gap: 8px;
       white-space: nowrap;
     }
-
-    .input-row button:hover:not(:disabled) {
-      background: var(--accent-hover);
-    }
-
-    .input-row button:active:not(:disabled) {
-      transform: scale(0.98);
-    }
-
-    .input-row button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
+    .input-row button:hover:not(:disabled) { background: var(--accent-hover); }
+    .input-row button:active:not(:disabled) { transform: scale(0.98); }
+    .input-row button:disabled { opacity: 0.6; cursor: not-allowed; }
     .spinner {
       width: 18px;
       height: 18px;
@@ -133,11 +94,7 @@
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
     }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
+    @keyframes spin { to { transform: rotate(360deg); } }
     .status {
       margin-top: 12px;
       font-size: 0.88rem;
@@ -146,17 +103,10 @@
       align-items: center;
       gap: 8px;
     }
-
     .status.error { color: var(--danger); }
     .status.success { color: var(--success); }
     .status.loading { color: var(--muted); }
-
-    .results {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
+    .results { display: flex; flex-direction: column; gap: 16px; }
     .result-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -165,13 +115,11 @@
       padding: 20px 22px;
       animation: fadeIn 0.35s ease;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .result-card .platform-header {
+    .platform-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -179,12 +127,7 @@
       flex-wrap: wrap;
       margin-bottom: 10px;
     }
-
-    .platform-header h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
+    .platform-header h3 { font-size: 1.15rem; font-weight: 700; }
     .badge {
       display: inline-block;
       padding: 4px 12px;
@@ -194,32 +137,27 @@
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
-
     .badge.excellent { background: #d1fae5; color: #065f46; }
     .badge.good { background: #dbeafe; color: #1e40af; }
     .badge.fair { background: #fef3c7; color: #92400e; }
     .badge.poor { background: #fee2e2; color: #991b1b; }
-
-    .result-card .reason {
+    .reason {
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.55;
       margin-bottom: 14px;
     }
-
     .meta-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 10px;
       font-size: 0.85rem;
     }
-
     .meta-item {
       background: #f1f5f9;
       border-radius: 8px;
       padding: 8px 12px;
     }
-
     .meta-item .label {
       color: var(--muted);
       font-size: 0.72rem;
@@ -227,44 +165,53 @@
       letter-spacing: 0.05em;
       margin-bottom: 2px;
     }
-
-    .meta-item .value {
-      font-weight: 600;
-      color: var(--text);
-    }
-
+    .meta-item .value { font-weight: 600; color: var(--text); }
     .empty-state {
       text-align: center;
       padding: 60px 20px;
       color: var(--muted);
     }
-
-    .empty-state .icon {
-      font-size: 3rem;
-      margin-bottom: 12px;
-      opacity: 0.5;
+    .empty-state .icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.5; }
+    .empty-state p { font-size: 0.95rem; }
+    .error-panel {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius);
+      padding: 20px;
+      color: #991b1b;
     }
-
-    .empty-state p {
-      font-size: 0.95rem;
+    .error-panel h4 { margin-bottom: 6px; font-size: 0.95rem; }
+    .error-panel p { font-size: 0.88rem; line-height: 1.5; margin-bottom: 10px; }
+    .error-panel details { margin-top: 10px; }
+    .error-panel summary {
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: #7f1d1d;
+      font-weight: 600;
+      user-select: none;
     }
-
+    .error-panel pre {
+      margin-top: 8px;
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      line-height: 1.45;
+      overflow-x: auto;
+      max-height: 260px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
     .skeleton {
       background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
       background-size: 200% 100%;
       animation: shimmer 1.4s infinite;
       border-radius: 8px;
     }
-
-    @keyframes shimmer {
-      to { background-position: -200% 0; }
-    }
-
-    .skeleton-card {
-      height: 160px;
-      border-radius: var(--radius);
-    }
-
+    @keyframes shimmer { to { background-position: -200% 0; } }
+    .skeleton-card { height: 160px; border-radius: var(--radius); }
     footer {
       margin-top: 40px;
       text-align: center;
@@ -272,16 +219,9 @@
       color: var(--muted);
       line-height: 1.6;
     }
-
     @media (max-width: 480px) {
-      .input-row button {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .result-card {
-        padding: 16px;
-      }
+      .input-row button { width: 100%; justify-content: center; }
+      .result-card { padding: 16px; }
     }
   </style>
 </head>
@@ -322,26 +262,48 @@
   </div>
 
   <script>
-    // ---------------------------------------------------------------------------
+    // =========================================================================
     // CONFIG
-    // ---------------------------------------------------------------------------
+    // =========================================================================
     const API_KEY = 'AQ.Ab8RN6J23FGLsX4ccq2I4tjK20dOPUkNWz7Ii5lp12i1VFZeug';
-    const MODEL = 'gemini-2.5-flash'; // fast & cheap; swap to gemini-3.8-flash if needed
-    const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+    const MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
 
-    // ---------------------------------------------------------------------------
-    // DOM refs
-    // ---------------------------------------------------------------------------
-    const inputEl = document.getElementById('productInput');
+    const RESPONSE_SCHEMA = {
+      type: 'object',
+      properties: {
+        recommendations: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              platform:   { type: 'string' },
+              matchScore: { type: 'string', enum: ['Excellent', 'Good', 'Fair', 'Poor'] },
+              reason:     { type: 'string' },
+              audience:   { type: 'string' },
+              fees:       { type: 'string' },
+              bestFor:    { type: 'string' },
+              tip:        { type: 'string' }
+            },
+            required: ['platform', 'matchScore', 'reason', 'audience', 'fees', 'bestFor', 'tip']
+          }
+        }
+      },
+      required: ['recommendations']
+    };
+
+    // =========================================================================
+    // DOM
+    // =========================================================================
+    const inputEl    = document.getElementById('productInput');
     const analyzeBtn = document.getElementById('analyzeBtn');
-    const btnText = document.getElementById('btnText');
-    const btnIcon = document.getElementById('btnIcon');
-    const statusEl = document.getElementById('status');
-    const resultsEl = document.getElementById('results');
+    const btnText    = document.getElementById('btnText');
+    const btnIcon    = document.getElementById('btnIcon');
+    const statusEl   = document.getElementById('status');
+    const resultsEl  = document.getElementById('results');
 
-    // ---------------------------------------------------------------------------
-    // Prompt engineering
-    // ---------------------------------------------------------------------------
+    // =========================================================================
+    // PROMPT
+    // =========================================================================
     function buildPrompt(productName) {
       return `You are an expert e-commerce strategy consultant. A user wants to know the BEST places to sell the following product:
 
@@ -349,51 +311,95 @@
 
 Recommend 5–7 selling platforms / channels. For EACH one, return:
 - platform (name)
-- matchScore: one of "Excellent", "Good", "Fair", "Poor"
+- matchScore: exactly one of "Excellent", "Good", "Fair", "Poor"
 - reason (1–2 sentences why it fits or doesn't fit this product)
 - audience (who shops there)
 - fees (typical fee structure, e.g. "10–15% commission", "No listing fee", "Subscription + fees")
 - bestFor (short phrase, e.g. "Handmade & unique items")
 - tip (one actionable tip for selling this product there)
 
-Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exactly this structure:
-
-{
-  "recommendations": [
-    {
-      "platform": "string",
-      "matchScore": "Excellent" | "Good" | "Fair" | "Poor",
-      "reason": "string",
-      "audience": "string",
-      "fees": "string",
-      "bestFor": "string",
-      "tip": "string"
-    }
-  ]
-}`;
+Return ONLY the JSON object with a "recommendations" array. No markdown, no code fences, no commentary.`;
     }
 
-    // ---------------------------------------------------------------------------
-    // API call
-    // ---------------------------------------------------------------------------
-    async function callGemini(productName) {
-      const body = {
-        contents: [
-          {
-            parts: [
-              { text: buildPrompt(productName) }
-            ]
-          }
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 2048,
-          // Ask for JSON mime type so the model is more likely to return pure JSON
-          responseMimeType: 'application/json'
+    // =========================================================================
+    // JSON EXTRACTION (robust)
+    // =========================================================================
+    function parseJsonResponse(text) {
+      let s = String(text || '').trim();
+      if (!s) throw new Error('Empty response text');
+
+      // Strip markdown code fences if present
+      s = s.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+
+      // 1. Try direct parse
+      let parsed;
+      try {
+        parsed = JSON.parse(s);
+      } catch (_) { /* fall through */ }
+
+      // 2. Try object slice { ... }
+      if (parsed === undefined) {
+        const start = s.indexOf('{');
+        const end = s.lastIndexOf('}');
+        if (start !== -1 && end > start) {
+          try { parsed = JSON.parse(s.slice(start, end + 1)); } catch (_) {}
         }
+      }
+
+      // 3. Try array slice [ ... ]
+      if (parsed === undefined) {
+        const aStart = s.indexOf('[');
+        const aEnd = s.lastIndexOf(']');
+        if (aStart !== -1 && aEnd > aStart) {
+          try { parsed = { recommendations: JSON.parse(s.slice(aStart, aEnd + 1)) }; } catch (_) {}
+        }
+      }
+
+      if (parsed === undefined) {
+        throw new Error('Could not extract JSON from model output');
+      }
+
+      if (Array.isArray(parsed)) parsed = { recommendations: parsed };
+
+      if (!parsed || !Array.isArray(parsed.recommendations)) {
+        throw new Error('JSON is missing "recommendations" array');
+      }
+
+      // Normalize
+      parsed.recommendations = parsed.recommendations
+        .filter(r => r && typeof r === 'object')
+        .map(r => ({
+          platform:   String(r.platform   || 'Unknown'),
+          matchScore: String(r.matchScore || 'Fair'),
+          reason:     String(r.reason     || ''),
+          audience:   String(r.audience   || ''),
+          fees:       String(r.fees       || ''),
+          bestFor:    String(r.bestFor    || ''),
+          tip:        String(r.tip        || '')
+        }));
+
+      return parsed;
+    }
+
+    // =========================================================================
+    // SINGLE API CALL
+    // =========================================================================
+    async function callGeminiOnce(productName, model, useSchema) {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+
+      const genConfig = {
+        temperature: 0.7,
+        maxOutputTokens: 4096,
+        responseMimeType: 'application/json'
+      };
+      if (useSchema) genConfig.responseSchema = RESPONSE_SCHEMA;
+
+      const body = {
+        contents: [{ role: 'user', parts: [{ text: buildPrompt(productName) }] }],
+        generationConfig: genConfig
       };
 
-      const res = await fetch(ENDPOINT, {
+      const res = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -402,46 +408,83 @@ Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exact
         body: JSON.stringify(body)
       });
 
+      const rawText = await res.text();
+
       if (!res.ok) {
-        let errMsg = `API error ${res.status}`;
+        let msg = `HTTP ${res.status}`;
         try {
-          const errJson = await res.json();
-          if (errJson?.error?.message) errMsg = errJson.error.message;
-        } catch (_) { /* ignore */ }
-        throw new Error(errMsg);
+          const errJson = JSON.parse(rawText);
+          if (errJson?.error?.message) msg += `: ${errJson.error.message}`;
+        } catch (_) {
+          if (rawText) msg += `: ${rawText.slice(0, 200)}`;
+        }
+        const err = new Error(msg);
+        err.raw = rawText;
+        throw err;
       }
 
-      const data = await res.json();
+      let data;
+      try { data = JSON.parse(rawText); } catch (_) {
+        const err = new Error('API returned non-JSON envelope');
+        err.raw = rawText;
+        throw err;
+      }
 
-      // Response path: candidates[0].content.parts[0].text
-      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      const candidate = data?.candidates?.[0];
+      const finishReason = candidate?.finishReason || 'unknown';
+
+      const parts = candidate?.content?.parts || [];
+      const text = parts.map(p => p.text || '').join('').trim();
+
       if (!text) {
-        throw new Error('Empty response from Gemini. The model may have blocked the request.');
+        const blockReason = data?.promptFeedback?.blockReason;
+        const err = new Error(
+          blockReason
+            ? `Prompt blocked: ${blockReason}`
+            : `Empty response from model (finishReason: ${finishReason})`
+        );
+        err.raw = rawText;
+        throw err;
       }
 
-      // Try to parse JSON; strip accidental fences if present
-      let cleaned = text.trim();
-      if (cleaned.startsWith('```')) {
-        cleaned = cleaned.replace(/^```(?:json)?\s*/i, '').replace(/```$/i, '').trim();
-      }
-
-      let parsed;
-      try {
-        parsed = JSON.parse(cleaned);
-      } catch (_) {
-        throw new Error('Gemini returned invalid JSON. Please try again.');
-      }
-
-      if (!parsed?.recommendations || !Array.isArray(parsed.recommendations)) {
-        throw new Error('Unexpected response shape from Gemini.');
-      }
-
-      return parsed.recommendations;
+      return { text, finishReason, raw: rawText };
     }
 
-    // ---------------------------------------------------------------------------
-    // UI helpers
-    // ---------------------------------------------------------------------------
+    // =========================================================================
+    // MAIN CALL (with multi-model + multi-config fallback)
+    // =========================================================================
+    let lastDebugRaw = '';
+
+    async function callGemini(productName) {
+      const attempts = [];
+      let lastRaw = '';
+
+      for (const model of MODELS) {
+        for (const useSchema of [true, false]) {
+          const label = `${model} / schema:${useSchema}`;
+          try {
+            const { text, finishReason, raw } = await callGeminiOnce(productName, model, useSchema);
+            lastRaw = raw;
+            const parsed = parseJsonResponse(text);
+            console.log(`[OK] ${label} · finishReason=${finishReason}`);
+            return parsed.recommendations;
+          } catch (e) {
+            lastRaw = e.raw || lastRaw;
+            attempts.push(`${label} → ${e.message}`);
+            console.warn(`[FAIL] ${label} → ${e.message}`);
+          }
+        }
+      }
+
+      lastDebugRaw = lastRaw;
+      const err = new Error('All Gemini attempts failed.');
+      err.details = attempts;
+      throw err;
+    }
+
+    // =========================================================================
+    // UI HELPERS
+    // =========================================================================
     function setStatus(message, type = '') {
       statusEl.textContent = message;
       statusEl.className = 'status' + (type ? ' ' + type : '');
@@ -454,7 +497,6 @@ Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exact
       if (isLoading) {
         btnIcon.style.display = 'none';
         btnText.textContent = 'Analyzing…';
-        // Insert spinner before text
         if (!analyzeBtn.querySelector('.spinner')) {
           const spinner = document.createElement('span');
           spinner.className = 'spinner';
@@ -471,9 +513,9 @@ Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exact
     function scoreBadgeClass(score) {
       switch (String(score).toLowerCase()) {
         case 'excellent': return 'excellent';
-        case 'good': return 'good';
-        case 'fair': return 'fair';
-        default: return 'poor';
+        case 'good':      return 'good';
+        case 'fair':      return 'fair';
+        default:          return 'poor';
       }
     }
 
@@ -511,15 +553,14 @@ Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exact
         const card = document.createElement('div');
         card.className = 'result-card';
         card.style.animationDelay = `${idx * 0.05}s`;
-
         const badgeClass = scoreBadgeClass(rec.matchScore);
 
         card.innerHTML = `
           <div class="platform-header">
-            <h3>${escapeHtml(rec.platform || 'Unknown platform')}</h3>
-            <span class="badge ${badgeClass}">${escapeHtml(rec.matchScore || '—')}</span>
+            <h3>${escapeHtml(rec.platform)}</h3>
+            <span class="badge ${badgeClass}">${escapeHtml(rec.matchScore)}</span>
           </div>
-          <p class="reason">${escapeHtml(rec.reason || 'No reason provided.')}</p>
+          <p class="reason">${escapeHtml(rec.reason)}</p>
           <div class="meta-grid">
             <div class="meta-item">
               <div class="label">Audience</div>
@@ -539,17 +580,37 @@ Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exact
             </div>
           </div>
         `;
-
         resultsEl.appendChild(card);
       });
     }
 
-    // ---------------------------------------------------------------------------
-    // Main handler
-    // ---------------------------------------------------------------------------
+    function renderError(message, details, raw) {
+      resultsEl.innerHTML = '';
+      const panel = document.createElement('div');
+      panel.className = 'error-panel';
+
+      const detailsHtml = details && details.length
+        ? `<details><summary>Attempt log (${details.length} tries)</summary><pre>${escapeHtml(details.join('\n'))}</pre></details>`
+        : '';
+
+      const rawHtml = raw
+        ? `<details><summary>Show raw API response</summary><pre>${escapeHtml(raw.slice(0, 5000))}</pre></details>`
+        : '';
+
+      panel.innerHTML = `
+        <h4>⚠️ Couldn't get a valid response</h4>
+        <p>${escapeHtml(message)}</p>
+        ${detailsHtml}
+        ${rawHtml}
+      `;
+      resultsEl.appendChild(panel);
+    }
+
+    // =========================================================================
+    // MAIN HANDLER
+    // =========================================================================
     async function handleAnalyze() {
       const productName = inputEl.value.trim();
-
       if (!productName) {
         setStatus('Please enter a product name.', 'error');
         inputEl.focus();
@@ -565,34 +626,28 @@ Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exact
         renderResults(recommendations);
         setStatus(`Found ${recommendations.length} selling channels for “${productName}”.`, 'success');
       } catch (err) {
-        console.error(err);
-        resultsEl.innerHTML = `
-          <div class="empty-state">
-            <div class="icon">⚠️</div>
-            <p>${escapeHtml(err.message || 'Something went wrong. Please try again.')}</p>
-          </div>`;
-        setStatus(err.message || 'Request failed.', 'error');
+        console.error('Gemini failed:', err);
+        renderError(
+          err.message || 'Something went wrong. Please try again.',
+          err.details || [],
+          lastDebugRaw
+        );
+        setStatus('Request failed — see details below.', 'error');
       } finally {
         setLoading(false);
       }
     }
 
-    // ---------------------------------------------------------------------------
-    // Events
-    // ---------------------------------------------------------------------------
+    // =========================================================================
+    // EVENTS
+    // =========================================================================
     analyzeBtn.addEventListener('click', handleAnalyze);
-
     inputEl.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
         handleAnalyze();
       }
     });
-
-    // Pre-fill a friendly example (optional)
-    // inputEl.value = 'Handmade soy candles';
-
-    // Focus on load
     window.addEventListener('load', () => inputEl.focus());
   </script>
 </body>
