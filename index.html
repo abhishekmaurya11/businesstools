@@ -1,356 +1,599 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Free AI Tools Directory — Discover 100+ Genuinely Free AI Tools</title>
-<meta name="description" content="Search a curated directory of genuinely free and freemium AI tools across writing, image, video, code, audio, research and productivity. Filter by category and pricing." />
-<style>
-  /* ============== Design Tokens (unchanged, for consistency) ============== */
-  :root{
-    --bg:#0b0d12; --bg-2:#11141c; --card:#151925; --card-2:#1b2130;
-    --border:rgba(255,255,255,0.08); --border-strong:rgba(255,255,255,0.14);
-    --text:#e7eaf0; --muted:#9aa3b2; --muted-2:#6b7484;
-    --accent:#7c5cff; --accent-2:#22d3ee; --accent-3:#f472b6;
-    --green:#34d399; --amber:#fbbf24;
-    --radius:14px; --shadow:0 10px 30px rgba(0,0,0,0.35);
-    --maxw:1180px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh; background-image:radial-gradient(1200px 600px at 80% -10%,rgba(124,92,255,0.18),transparent 60%),radial-gradient(900px 500px at 0% 10%,rgba(34,211,238,0.12),transparent 55%);}
-  a{color:inherit;text-decoration:none}
-  .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Places to Sell · Gemini AI</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
 
-  /* ============== Header (unchanged) ============== */
-  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(12px);background:rgba(11,13,18,0.72);border-bottom:1px solid var(--border);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-0.02em;font-size:18px}
-  .brand .logo{width:32px;height:32px;border-radius:9px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent));box-shadow:0 6px 18px rgba(124,92,255,0.35);position:relative;}
-  .brand .logo::after{content:"AI";position:absolute;inset:0;display:grid;place-items:center;font-size:11px;font-weight:900;color:#0b0d12;letter-spacing:0.5px;}
-  .nav-links{display:flex;gap:8px;align-items:center}
-  .nav-links a{color:var(--muted);font-size:14px;font-weight:500;padding:8px 12px;border-radius:8px;transition:.2s;}
-  .nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
-  .btn-cta{background:linear-gradient(135deg,var(--accent),#5b7bff);color:#fff;padding:9px 16px;border-radius:10px;font-weight:600;font-size:14px;box-shadow:0 8px 22px rgba(124,92,255,0.35);transition:transform .15s ease, box-shadow .2s;}
-  .btn-cta:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(124,92,255,0.5)}
-  .menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* ============== Hero (unchanged) ============== */
-  .hero{padding:72px 0 36px;text-align:center}
-  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,255,0.12);border:1px solid rgba(124,92,255,0.3);color:#c7b8ff;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:22px;}
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(124,92,255,0.25)}
-  .hero h1{font-size:clamp(34px,6vw,60px);line-height:1.05;letter-spacing:-0.03em;font-weight:800;max-width:920px;margin:0 auto 18px;}
-  .hero h1 .grad{background:linear-gradient(120deg,var(--accent-2),var(--accent),var(--accent-3));-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero p.sub{color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:620px;margin:0 auto 30px}
-  .search-wrap{max-width:640px;margin:0 auto;position:relative}
-  .search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted-2)}
-  #search{width:100%;padding:16px 18px 16px 48px;font-size:16px;color:var(--text);background:var(--card);border:1px solid var(--border-strong);border-radius:12px;outline:none;transition:.2s;}
-  #search:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(124,92,255,0.18)}
-  #search::placeholder{color:var(--muted-2)}
-  .stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-  .stat .num{font-size:26px;font-weight:800;letter-spacing:-0.02em}
-  .stat .num.grad{background:linear-gradient(120deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .stat .lbl{color:var(--muted);font-size:13px;margin-top:2px}
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 64px;
+    }
 
-  /* ============== Advanced Toolbar (NEW) ============== */
-  .toolbar{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:48px 0 22px; padding-bottom:20px; border-bottom:1px solid var(--border);}
-  .filters{display:flex;flex-direction:column;gap:12px; flex:1; min-width:250px;}
-  .filter-group{display:flex;flex-wrap:wrap;gap:8px; align-items:center;}
-  .filter-group-label{font-size:12px;font-weight:600;color:var(--muted-2);text-transform:uppercase;letter-spacing:0.05em; margin-right:8px;}
-  .chip{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;background:var(--card);border:1px solid var(--border);color:var(--muted);transition:.2s;user-select:none;}
-  .chip:hover{color:var(--text);border-color:var(--border-strong)}
-  .chip.active{background:linear-gradient(135deg,rgba(124,92,255,0.25),rgba(34,211,238,0.15));border-color:rgba(124,92,255,0.5);color:#fff;}
-  .sort-wrap{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px; flex-shrink:0;}
-  #sort{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:13px;cursor:pointer;outline:none;}
-  #sort:focus{border-color:var(--accent)}
+    .app {
+      width: 100%;
+      max-width: 960px;
+    }
 
-  /* ============== Grid & Cards (unchanged) ============== */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
-  .card{background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden;transition:transform .18s ease, border-color .2s, box-shadow .2s;display:flex;flex-direction:column;}
-  .card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 120px at 50% -10%, rgba(124,92,255,0.18), transparent 60%);opacity:0;transition:opacity .25s;}
-  .card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--shadow)}
-  .card:hover::before{opacity:1}
-  .card-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .icon{width:46px;height:46px;border-radius:12px;flex-shrink:0;display:grid;place-items:center;font-weight:800;font-size:18px;color:#0b0d12;letter-spacing:-0.5px;box-shadow:0 6px 14px rgba(0,0,0,0.35);}
-  .card-title{font-size:17px;font-weight:700;letter-spacing:-0.01em}
-  .card-cat{font-size:12px;color:var(--muted);margin-top:1px}
-  .card-desc{color:var(--muted);font-size:14px;flex:1;margin-bottom:14px}
-  .card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-  .tag{font-size:11px;font-weight:600;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);}
-  .tag.free{color:var(--green);border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.08)}
-  .tag.paid{color:var(--amber);border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.08)}
-  .tag.freemium{color:var(--accent-2);border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.08)}
-  .card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
-  .rate{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--amber);font-weight:600}
-  .rate .star{color:var(--amber)}
-  .visit{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--accent-2);transition:gap .2s;}
-  .visit:hover{gap:9px}
-  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);border:1px dashed var(--border);border-radius:var(--radius);}
-  .empty .big{font-size:40px;margin-bottom:10px}
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
 
-  /* ============== Footer (unchanged) ============== */
-  footer{margin-top:72px;border-top:1px solid var(--border);padding:36px 0;color:var(--muted);font-size:14px}
-  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-  footer a{color:var(--muted);transition:color .2s}
-  footer a:hover{color:var(--text)}
-  .foot-links{display:flex;gap:20px;flex-wrap:wrap}
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
 
-  /* ============== Mobile (unchanged) ============== */
-  @media (max-width:760px){ .nav-links{display:none} .menu-btn{display:block} .nav-links.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--bg-2);border-bottom:1px solid var(--border);padding:12px 24px;gap:6px;} .nav-links.open a{width:100%} .stats{gap:22px} .toolbar{flex-direction:column;align-items:stretch} .sort-wrap{align-self:flex-end; margin-top:12px;} }
-</style>
+    header h1 span {
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .input-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .input-row input {
+      flex: 1 1 240px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    .input-row input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .input-row button {
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .input-row button:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+
+    .input-row button:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .input-row button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 0.88rem;
+      min-height: 1.3em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    .status.loading { color: var(--muted); }
+
+    .results {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .result-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 22px;
+      animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-card .platform-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .platform-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .badge.excellent { background: #d1fae5; color: #065f46; }
+    .badge.good { background: #dbeafe; color: #1e40af; }
+    .badge.fair { background: #fef3c7; color: #92400e; }
+    .badge.poor { background: #fee2e2; color: #991b1b; }
+
+    .result-card .reason {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .meta-item {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+
+    .meta-item .label {
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .meta-item .value {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+
+    .empty-state .icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+
+    .empty-state p {
+      font-size: 0.95rem;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 8px;
+    }
+
+    @keyframes shimmer {
+      to { background-position: -200% 0; }
+    }
+
+    .skeleton-card {
+      height: 160px;
+      border-radius: var(--radius);
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      .input-row button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .result-card {
+        padding: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-<a href="https://www.javascriptdoctor.blog/2026/11/donate-us-as-no-ads-here.html" style="color: #dc2626; text-decoration: none; background-color: #fee2e2; padding: 4px 8px; border-radius: 4px;">Click Here To Donate Us As No Ads Here</a>
-<section class="hero">
-  <div class="container">
-    <h1>Discover <span class="grad">100+ genuinely free AI tools</span></h1>
-    <p class="sub">Find free and freemium AI tools for writing, images, video, code, audio, research and productivity. Filter by category and pricing to find your perfect match.</p>
-    <div class="search-wrap">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="search" type="search" aria-label="Search AI tools" placeholder="Search by name, category, or use case…" />
-    </div>
-    <p id="resultCount" class="sub" aria-live="polite"></p>
-  </div>
-</section>
+  <div class="app">
+    <header>
+      <h1>Where to sell <span>it</span>?</h1>
+      <p>Enter a product name and Gemini will recommend the best marketplaces and channels to sell it.</p>
+    </header>
 
-<section id="directory" class="container">
-  <!-- ADVANCED TOOLBAR: Category + Pricing Filters -->
-  <div class="toolbar">
-    <div class="filters">
-      <div class="filter-group">
-        <span class="filter-group-label">Category</span>
-        <!-- Chips will be injected by JS -->
+    <div class="input-card">
+      <div class="input-row">
+        <input
+          type="text"
+          id="productInput"
+          placeholder="e.g. Handmade soy candles, Vintage leather jacket, Mechanical keyboard…"
+          autocomplete="off"
+          maxlength="200"
+        />
+        <button id="analyzeBtn">
+          <span id="btnIcon">✨</span>
+          <span id="btnText">Analyze</span>
+        </button>
       </div>
-      <div class="filter-group">
-        <span class="filter-group-label">Pricing</span>
-        <button class="chip active" data-price="all">All</button>
-        <button class="chip" data-price="free">Free</button>
-        <button class="chip" data-price="freemium">Freemium</button>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="empty-state">
+        <div class="icon">🛍️</div>
+        <p>Enter a product above to see where it sells best.</p>
       </div>
     </div>
-    <div class="sort-wrap">
-      <label for="sort">Sort by</label>
-      <select id="sort">
-        <option value="default">Default</option>
-        <option value="rating">Rating</option>
-        <option value="name">Name</option>
-      </select>
-    </div>
+
+    <footer>
+      Powered by Gemini API · Results are AI-generated recommendations, not financial advice.
+    </footer>
   </div>
 
-  <div class="grid" id="grid"><!-- cards injected by JS --></div>
-</section>
+  <script>
+    // ---------------------------------------------------------------------------
+    // CONFIG
+    // ---------------------------------------------------------------------------
+    const API_KEY = 'AQ.Ab8RN6K5BPMe2bQGRslef_z-9BcM39fVL_IIjxGWmyxtS3M3bg';
+    const MODEL = 'gemini-2.5-flash'; // fast & cheap; swap to gemini-3.8-flash if needed
+    const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
-<script>
-/* ============== COMPREHENSIVE FREE TOOLS DATA (Embedded & Curated) ============== */
-/*
- * This dataset is carefully curated from reputable sources like eWeek,
- * DataCamp, and community "awesome" lists to ensure tools have a genuine,
- * usable free tier. Each entry is structured for the UI.
- */
-const TOOLS = [
-  // --- Chatbots & General Assistants ---
-  {name:"ChatGPT", cat:"chat", price:"freemium", rating:4.8, featured:true, desc:"Conversational AI assistant with a capable free tier (GPT-5.3 Instant).", tags:["GPT-4","assistant","chat"], url:"https://chat.openai.com"},
-  {name:"Claude", cat:"chat", price:"freemium", rating:4.7, featured:true, desc:"Anthropic's assistant, excellent for long-form writing and analysis. Free tier: ~15-40 msgs/5hr.", tags:["anthropic","reasoning","long-context"], url:"https://claude.ai"},
-  {name:"Gemini", cat:"chat", price:"freemium", rating:4.5, featured:true, desc:"Google's multimodal assistant, tightly integrated with Workspace and Gmail. Generous free tier.", tags:["google","multimodal","workspace"], url:"https://gemini.google.com"},
-  {name:"DeepSeek", cat:"chat", price:"free", rating:4.3, featured:false, desc:"Frontier-class reasoning with essentially no message cap. Excellent for deep research and math.", tags:["reasoning","research","free"], url:"https://chat.deepseek.com"},
-  {name:"Grok", cat:"chat", price:"freemium", rating:4.1, featured:false, desc:"xAI's chatbot with native access to real-time X (Twitter) data. Free tier: ~10 prompts/2hr.", tags:["xai","realtime","social"], url:"https://grok.com"},
-  {name:"HuggingChat", cat:"chat", price:"free", rating:4.0, featured:false, desc:"Open-source chat assistant powered by community models. Completely free.", tags:["open-source","assistant","chat"], url:"https://huggingface.co/chat"},
-  {name:"Microsoft Copilot", cat:"chat", price:"freemium", rating:4.2, featured:false, desc:"GPT-4-class chat with DALL-E image generation, integrated into Windows and Edge.", tags:["microsoft","windows","dalle"], url:"https://copilot.microsoft.com"},
-  {name:"Pi", cat:"chat", price:"free", rating:4.0, featured:false, desc:"Conversational AI assistant designed for supportive, empathetic everyday conversations.", tags:["assistant","conversation","chat"], url:"https://pi.ai"},
+    // ---------------------------------------------------------------------------
+    // DOM refs
+    // ---------------------------------------------------------------------------
+    const inputEl = document.getElementById('productInput');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const statusEl = document.getElementById('status');
+    const resultsEl = document.getElementById('results');
 
-  // --- Writing & Editing ---
-  {name:"Grammarly", cat:"writing", price:"freemium", rating:4.5, featured:true, desc:"Advanced grammar, spelling, and tone suggestions. The free tier is very capable.", tags:["grammar","editing","tone"], url:"https://www.grammarly.com"},
-  {name:"QuillBot", cat:"writing", price:"freemium", rating:4.3, featured:false, desc:"Paraphrasing tool, grammar checker, and summarizer. Free tier offers essential features.", tags:["paraphrasing","grammar","summarizer"], url:"https://quillbot.com"},
-  {name:"Notion AI", cat:"writing", price:"freemium", rating:4.2, featured:false, desc:"Native AI inside Notion for summarizing notes, drafting docs and querying your workspace.", tags:["notes","summary","workspace"], url:"https://www.notion.so/product/ai"},
-  {name:"Wordtune", cat:"writing", price:"freemium", rating:4.1, featured:false, desc:"AI writing companion for rewriting, shortening and expanding text. Has a free plan.", tags:["rewrite","editing","writing"], url:"https://www.wordtune.com"},
-  {name:"Rytr", cat:"writing", price:"freemium", rating:3.9, featured:false, desc:"Lightweight, affordable AI writer covering 30+ use cases and tones. Free tier available.", tags:["affordable","copy","tones"], url:"https://rytr.me"},
+    // ---------------------------------------------------------------------------
+    // Prompt engineering
+    // ---------------------------------------------------------------------------
+    function buildPrompt(productName) {
+      return `You are an expert e-commerce strategy consultant. A user wants to know the BEST places to sell the following product:
 
-  // --- Image Generation & Editing ---
-  {name:"Stable Diffusion", cat:"image", price:"free", rating:4.4, featured:true, desc:"Open-weights image model you can run locally or via numerous free hosted UIs.", tags:["open-source","self-host","text-to-image"], url:"https://stability.ai"},
-  {name:"Canva Magic Studio", cat:"image", price:"freemium", rating:4.3, featured:false, desc:"AI-powered design features integrated into Canva. The free tier is excellent for beginners.", tags:["design","templates","image"], url:"https://www.canva.com/magic"},
-  {name:"Adobe Firefly", cat:"image", price:"freemium", rating:4.2, featured:false, desc:"Commercially-safe generative image tools with limited monthly free credits.", tags:["adobe","generative-fill","commercial"], url:"https://www.adobe.com/products/firefly.html"},
-  {name:"Ideogram", cat:"image", price:"freemium", rating:4.1, featured:false, desc:"Image generator best-in-class at rendering readable text inside graphics. Free plan: 10 credits/week.", tags:["text-in-image","typography"], url:"https://ideogram.ai"},
-  {name:"Leonardo.ai", cat:"image", price:"freemium", rating:4.1, featured:false, desc:"Game-asset and illustration focused image suite with a free daily credit allowance.", tags:["game-art","assets","fine-tuned"], url:"https://leonardo.ai"},
-  {name:"Remove.bg", cat:"image", price:"freemium", rating:4.5, featured:false, desc:"One-click background removal powered by AI. Free for standard resolution images.", tags:["background","api","fast"], url:"https://www.remove.bg"},
-  {name:"Clipdrop", cat:"image", price:"freemium", rating:4.0, featured:false, desc:"AI image tools for cleanup, relighting, and background removal. Free tier available.", tags:["image-editing","cleanup","background"], url:"https://clipdrop.co"},
-  {name:"Playground AI", cat:"image", price:"freemium", rating:4.0, featured:false, desc:"AI image creation and editing workspace. Offers a free tier with daily generations.", tags:["image-generation","editing","design"], url:"https://playground.com"},
+"${productName}"
 
-  // --- Video Generation & Editing ---
-  {name:"Runway", cat:"video", price:"freemium", rating:4.4, featured:true, desc:"Gen-2 text-to-video and a creative editing suite. Free tier offers limited credits.", tags:["text-to-video","editor"], url:"https://runwayml.com"},
-  {name:"CapCut", cat:"video", price:"freemium", rating:4.3, featured:false, desc:"Popular video editor with AI features like auto-captions and background removal. Free tier is robust.", tags:["editing","captions","social"], url:"https://www.capcut.com"},
-  {name:"Descript", cat:"video", price:"freemium", rating:4.2, featured:false, desc:"Edit video and podcasts by editing text. Free plan includes essential features.", tags:["editing","transcript","overdub"], url:"https://www.descript.com"},
-  {name:"Opus Clip", cat:"video", price:"freemium", rating:4.0, featured:false, desc:"Turn long videos into viral short clips with auto-captions. Free tier available.", tags:["shorts","repurpose","captions"], url:"https://www.opus.pro"},
-  {name:"Kling AI", cat:"video", price:"freemium", rating:4.0, featured:false, desc:"Text- and image-to-video generation with cinematic motion controls. Free daily credits.", tags:["text-to-video","image-to-video","generation"], url:"https://klingai.com"},
+Recommend 5–7 selling platforms / channels. For EACH one, return:
+- platform (name)
+- matchScore: one of "Excellent", "Good", "Fair", "Poor"
+- reason (1–2 sentences why it fits or doesn't fit this product)
+- audience (who shops there)
+- fees (typical fee structure, e.g. "10–15% commission", "No listing fee", "Subscription + fees")
+- bestFor (short phrase, e.g. "Handmade & unique items")
+- tip (one actionable tip for selling this product there)
 
-  // --- Audio, Voice & Music ---
-  {name:"ElevenLabs", cat:"audio", price:"freemium", rating:4.6, featured:true, desc:"State-of-the-art text-to-speech with voice cloning. Free tier: 10k characters/month.", tags:["tts","voice-clone","multilingual"], url:"https://elevenlabs.io"},
-  {name:"Whisper", cat:"audio", price:"free", rating:4.8, featured:false, desc:"OpenAI's open-source speech-to-text model. Completely free to use locally or via API.", tags:["stt","transcription","open-source"], url:"https://github.com/openai/whisper"},
-  {name:"Suno", cat:"audio", price:"freemium", rating:4.4, featured:false, desc:"Generate full songs with vocals from a text prompt. Free tier: 10 songs/day.", tags:["music","vocals","songs"], url:"https://suno.com"},
-  {name:"Murf AI", cat:"audio", price:"freemium", rating:4.2, featured:false, desc:"AI voice studio for narration and voiceovers. Free plan offers limited monthly characters.", tags:["text-to-speech","voiceover","studio"], url:"https://murf.ai"},
-  {name:"Adobe Podcast", cat:"audio", price:"freemium", rating:4.2, featured:false, desc:"Browser-based speech enhancement and podcast recording. Free tier available.", tags:["podcast","speech","enhancement"], url:"https://podcast.adobe.com"},
+Return ONLY valid JSON — no markdown, no code fences, no extra text. Use exactly this structure:
 
-  // --- Code & Development ---
-  {name:"GitHub Copilot", cat:"code", price:"freemium", rating:4.5, featured:true, desc:"AI pair programmer inside your IDE. Free for verified students and open-source maintainers.", tags:["autocomplete","ide","chat"], url:"https://github.com/features/copilot"},
-  {name:"Codeium", cat:"code", price:"free", rating:4.5, featured:false, desc:"Free AI code completion and chat across 70+ editors. Completely free for individuals.", tags:["free","autocomplete","chat"], url:"https://codeium.com"},
-  {name:"Cursor", cat:"code", price:"freemium", rating:4.4, featured:false, desc:"AI-first code editor with a free tier that includes basic AI features.", tags:["editor","agent","refactor"], url:"https://cursor.sh"},
-  {name:"v0", cat:"code", price:"freemium", rating:4.2, featured:false, desc:"Vercel's generative UI tool that turns prompts into React components. Free tier available.", tags:["ui","react","shadcn"], url:"https://v0.dev"},
-  {name:"Phind", cat:"code", price:"freemium", rating:4.2, featured:false, desc:"AI search built for developers. Free tier offers a limited number of searches.", tags:["search","developer","citations"], url:"https://www.phind.com"},
-  {name:"Windsurf", cat:"code", price:"freemium", rating:4.0, featured:false, desc:"AI-powered development environment with a free tier for individual developers.", tags:["ide","agent","coding"], url:"https://windsurf.com"},
+{
+  "recommendations": [
+    {
+      "platform": "string",
+      "matchScore": "Excellent" | "Good" | "Fair" | "Poor",
+      "reason": "string",
+      "audience": "string",
+      "fees": "string",
+      "bestFor": "string",
+      "tip": "string"
+    }
+  ]
+}`;
+    }
 
-  // --- Research & Search ---
-  {name:"Perplexity", cat:"research", price:"freemium", rating:4.6, featured:true, desc:"Answer engine that cites live web sources. Free tier is very capable.", tags:["search","citations","research"], url:"https://www.perplexity.ai"},
-  {name:"NotebookLM", cat:"research", price:"free", rating:4.4, featured:false, desc:"Google's research assistant that answers questions using only your uploaded sources. Free.", tags:["research","documents","summaries"], url:"https://notebooklm.google"},
-  {name:"Elicit", cat:"research", price:"freemium", rating:4.2, featured:false, desc:"AI research assistant that finds papers and extracts data. Free tier available.", tags:["papers","literature","extraction"], url:"https://elicit.com"},
-  {name:"Semantic Scholar", cat:"research", price:"free", rating:4.4, featured:false, desc:"AI-powered search and discovery engine for scientific literature. Free to use.", tags:["papers","academic","search"], url:"https://www.semanticscholar.org"},
-  {name:"Research Rabbit", cat:"research", price:"free", rating:4.0, featured:false, desc:"Visual discovery of related papers and authors. Completely free.", tags:["discovery","visual","free"], url:"https://www.researchrabbit.ai"},
-  {name:"Consensus", cat:"research", price:"freemium", rating:4.0, featured:false, desc:"Search engine over scientific papers that returns evidence-based answers.", tags:["science","citations","evidence"], url:"https://consensus.app"},
+    // ---------------------------------------------------------------------------
+    // API call
+    // ---------------------------------------------------------------------------
+    async function callGemini(productName) {
+      const body = {
+        contents: [
+          {
+            parts: [
+              { text: buildPrompt(productName) }
+            ]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 2048,
+          // Ask for JSON mime type so the model is more likely to return pure JSON
+          responseMimeType: 'application/json'
+        }
+      };
 
-  // --- Productivity & Automation ---
-  {name:"Zapier", cat:"productivity", price:"freemium", rating:4.2, featured:false, desc:"Automation platform connecting thousands of apps. Free plan covers basic workflows.", tags:["automation","workflows","integrations"], url:"https://zapier.com"},
-  {name:"Otter.ai", cat:"productivity", price:"freemium", rating:4.1, featured:false, desc:"Real-time meeting transcription and summaries. Free tier: 300 mins/month.", tags:["meetings","transcript","summary"], url:"https://otter.ai"},
-  {name:"Gamma", cat:"productivity", price:"freemium", rating:4.2, featured:false, desc:"Generate polished presentations and docs from a prompt. Free tier includes AI credits.", tags:["slides","docs","webpages"], url:"https://gamma.app"},
-  {name:"Reclaim AI", cat:"productivity", price:"freemium", rating:4.0, featured:false, desc:"AI calendar assistant for scheduling tasks and habits. Has a free plan.", tags:["calendar","scheduling","planning"], url:"https://reclaim.ai"},
-  {name:"Tana", cat:"productivity", price:"freemium", rating:3.9, featured:false, desc:"Structured workspace with AI features for notes and knowledge management.", tags:["notes","knowledge-management","workspace"], url:"https://tana.inc"},
-];
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': API_KEY
+        },
+        body: JSON.stringify(body)
+      });
 
-/* ============== Categories & Colors ============== */
-const CATEGORIES = [
-  {id:"all", label:"All"},
-  {id:"writing", label:"Writing"},
-  {id:"image", label:"Image"},
-  {id:"video", label:"Video"},
-  {id:"audio", label:"Audio"},
-  {id:"code", label:"Code"},
-  {id:"chat", label:"Chatbot"},
-  {id:"research", label:"Research"},
-  {id:"productivity", label:"Productivity"}
-];
+      if (!res.ok) {
+        let errMsg = `API error ${res.status}`;
+        try {
+          const errJson = await res.json();
+          if (errJson?.error?.message) errMsg = errJson.error.message;
+        } catch (_) { /* ignore */ }
+        throw new Error(errMsg);
+      }
 
-const ICON_COLORS = {
-  writing:"#22d3ee", image:"#f472b6", video:"#7c5cff", audio:"#34d399",
-  code:"#60a5fa", chat:"#fbbf24", research:"#f97316", productivity:"#a78bfa",
-  other:"#7c5cff"
-};
+      const data = await res.json();
 
-/* ============== State ============== */
-let activeCategory = "all";
-let activePrice = "all";
-let query = "";
-let sortMode = "default";
+      // Response path: candidates[0].content.parts[0].text
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!text) {
+        throw new Error('Empty response from Gemini. The model may have blocked the request.');
+      }
 
-/* ============== Helpers ============== */
-const $ = (s)=>document.querySelector(s);
-const el = (tag, cls, html)=>{ const e = document.createElement(tag); if(cls) e.className = cls; if(html!=null) e.innerHTML = html; return e; };
+      // Try to parse JSON; strip accidental fences if present
+      let cleaned = text.trim();
+      if (cleaned.startsWith('```')) {
+        cleaned = cleaned.replace(/^```(?:json)?\s*/i, '').replace(/```$/i, '').trim();
+      }
 
-function initials(name){ if (!name) return "?"; return name.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).slice(0,2).map(w=>w[0]).join("").toUpperCase(); }
-function priceClass(p){ return p === "free" ? "free" : (p === "paid" ? "paid" : "freemium"); }
-function priceLabel(p){ if (!p) return "Unknown"; return p.charAt(0).toUpperCase() + p.slice(1); }
+      let parsed;
+      try {
+        parsed = JSON.parse(cleaned);
+      } catch (_) {
+        throw new Error('Gemini returned invalid JSON. Please try again.');
+      }
 
-/* ============== Render: Grid (Multi-Filter Logic) ============== */
-function renderGrid(){
-  const grid = $("#grid");
-  grid.innerHTML = "";
+      if (!parsed?.recommendations || !Array.isArray(parsed.recommendations)) {
+        throw new Error('Unexpected response shape from Gemini.');
+      }
 
-  // 1. Filter by Category
-  let list = TOOLS.filter(t => activeCategory === "all" || t.cat === activeCategory);
+      return parsed.recommendations;
+    }
 
-  // 2. Filter by Price
-  if (activePrice !== "all") {
-    list = list.filter(t => t.price === activePrice);
-  }
+    // ---------------------------------------------------------------------------
+    // UI helpers
+    // ---------------------------------------------------------------------------
+    function setStatus(message, type = '') {
+      statusEl.textContent = message;
+      statusEl.className = 'status' + (type ? ' ' + type : '');
+    }
 
-  // 3. Filter by Search Query
-  const q = query.trim().toLowerCase();
-  if (q) {
-    list = list.filter(t =>
-      t.name.toLowerCase().includes(q) ||
-      t.desc.toLowerCase().includes(q) ||
-      (t.tags || []).some(tag => tag.toLowerCase().includes(q))
-    );
-  }
+    function setLoading(isLoading) {
+      analyzeBtn.disabled = isLoading;
+      inputEl.disabled = isLoading;
 
-  // 4. Sort
-  if (sortMode === "rating") { list.sort((a,b) => b.rating - a.rating); }
-  else if (sortMode === "name") { list.sort((a,b) => a.name.localeCompare(b.name)); }
+      if (isLoading) {
+        btnIcon.style.display = 'none';
+        btnText.textContent = 'Analyzing…';
+        // Insert spinner before text
+        if (!analyzeBtn.querySelector('.spinner')) {
+          const spinner = document.createElement('span');
+          spinner.className = 'spinner';
+          analyzeBtn.prepend(spinner);
+        }
+      } else {
+        const spinner = analyzeBtn.querySelector('.spinner');
+        if (spinner) spinner.remove();
+        btnIcon.style.display = '';
+        btnText.textContent = 'Analyze';
+      }
+    }
 
-  // 5. Update result count
-  const total = TOOLS.length;
-  $("#resultCount").textContent = (q || activeCategory !== 'all' || activePrice !== 'all')
-    ? `${list.length} of ${total} tools found`
-    : `${total} free tools`;
+    function scoreBadgeClass(score) {
+      switch (String(score).toLowerCase()) {
+        case 'excellent': return 'excellent';
+        case 'good': return 'good';
+        case 'fair': return 'fair';
+        default: return 'poor';
+      }
+    }
 
-  // 6. Empty state
-  if (list.length === 0) {
-    grid.appendChild(el("div","empty",
-      '<div class="big">🔍</div>'+
-      '<div style="font-weight:600;color:var(--text);margin-bottom:4px">No tools found</div>'+
-      '<div>Try a different keyword or adjust your filters.</div>'));
-    return;
-  }
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
-  // 7. Render cards
-  list.forEach(t => {
-    const color = ICON_COLORS[t.cat] || ICON_COLORS.other;
-    const card = el("div","card");
-    card.innerHTML = `
-      <div class="card-head">
-        <div class="icon" style="background:linear-gradient(135deg, ${color}, ${color}cc)">${initials(t.name)}</div>
-        <div>
-          <div class="card-title">${t.name}${t.featured ? ' <span style="font-size:10px;color:#0b0d12;background:'+color+';padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:6px;font-weight:700">Featured</span>' : ''}</div>
-          <div class="card-cat">${CATEGORIES.find(c=>c.id===t.cat)?.label || t.cat}</div>
-        </div>
-      </div>
-      <div class="card-desc">${t.desc}</div>
-      <div class="card-tags">
-        <span class="tag ${priceClass(t.price)}">${priceLabel(t.price)}</span>
-        ${(t.tags||[]).slice(0,4).map(tag=>`<span class="tag">${tag}</span>`).join("")}
-      </div>
-      <div class="card-foot">
-        <div class="rate"><span class="star">★</span> ${t.rating.toFixed(1)}</div>
-        <a class="visit" href="${t.url}" target="_blank" rel="noopener noreferrer">Visit <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
+    function renderSkeletons() {
+      resultsEl.innerHTML = '';
+      for (let i = 0; i < 3; i++) {
+        const sk = document.createElement('div');
+        sk.className = 'skeleton skeleton-card';
+        resultsEl.appendChild(sk);
+      }
+    }
 
-/* ============== Events (Multi-Filter Wiring) ============== */
-$("#search").addEventListener("input", (e)=>{ query = e.target.value; renderGrid(); });
-$("#sort").addEventListener("change", (e)=>{ sortMode = e.target.value; renderGrid(); });
+    function renderResults(recommendations) {
+      resultsEl.innerHTML = '';
 
-// Category Chips
-document.querySelector('.filter-group').addEventListener('click', (e) => {
-  if (e.target.classList.contains('chip') && e.target.dataset.cat) {
-    document.querySelectorAll('.filter-group .chip').forEach(c => c.classList.remove('active'));
-    e.target.classList.add('active');
-    activeCategory = e.target.dataset.cat;
-    renderGrid();
-  }
-});
+      if (!recommendations.length) {
+        resultsEl.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">🤔</div>
+            <p>No recommendations returned. Try a different product name.</p>
+          </div>`;
+        return;
+      }
 
-// Price Chips
-document.querySelectorAll('[data-price]').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('[data-price]').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    activePrice = chip.dataset.price;
-    renderGrid();
-  });
-});
+      recommendations.forEach((rec, idx) => {
+        const card = document.createElement('div');
+        card.className = 'result-card';
+        card.style.animationDelay = `${idx * 0.05}s`;
 
-/* ============== Init (Dynamic Chip Generation) ============== */
-(function init() {
-  // Populate Category Chips
-  const catGroup = document.querySelector('.filter-group');
-  CATEGORIES.forEach(cat => {
-    const chip = el('button', `chip${cat.id === 'all' ? ' active' : ''}`, cat.label);
-    chip.dataset.cat = cat.id;
-    catGroup.appendChild(chip);
-  });
+        const badgeClass = scoreBadgeClass(rec.matchScore);
 
-  // Initial render
-  renderGrid();
-})();
-</script>
+        card.innerHTML = `
+          <div class="platform-header">
+            <h3>${escapeHtml(rec.platform || 'Unknown platform')}</h3>
+            <span class="badge ${badgeClass}">${escapeHtml(rec.matchScore || '—')}</span>
+          </div>
+          <p class="reason">${escapeHtml(rec.reason || 'No reason provided.')}</p>
+          <div class="meta-grid">
+            <div class="meta-item">
+              <div class="label">Audience</div>
+              <div class="value">${escapeHtml(rec.audience || '—')}</div>
+            </div>
+            <div class="meta-item">
+              <div class="label">Fees</div>
+              <div class="value">${escapeHtml(rec.fees || '—')}</div>
+            </div>
+            <div class="meta-item">
+              <div class="label">Best For</div>
+              <div class="value">${escapeHtml(rec.bestFor || '—')}</div>
+            </div>
+            <div class="meta-item">
+              <div class="label">💡 Tip</div>
+              <div class="value">${escapeHtml(rec.tip || '—')}</div>
+            </div>
+          </div>
+        `;
+
+        resultsEl.appendChild(card);
+      });
+    }
+
+    // ---------------------------------------------------------------------------
+    // Main handler
+    // ---------------------------------------------------------------------------
+    async function handleAnalyze() {
+      const productName = inputEl.value.trim();
+
+      if (!productName) {
+        setStatus('Please enter a product name.', 'error');
+        inputEl.focus();
+        return;
+      }
+
+      setLoading(true);
+      setStatus('Asking Gemini where this sells best…', 'loading');
+      renderSkeletons();
+
+      try {
+        const recommendations = await callGemini(productName);
+        renderResults(recommendations);
+        setStatus(`Found ${recommendations.length} selling channels for “${productName}”.`, 'success');
+      } catch (err) {
+        console.error(err);
+        resultsEl.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">⚠️</div>
+            <p>${escapeHtml(err.message || 'Something went wrong. Please try again.')}</p>
+          </div>`;
+        setStatus(err.message || 'Request failed.', 'error');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Events
+    // ---------------------------------------------------------------------------
+    analyzeBtn.addEventListener('click', handleAnalyze);
+
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleAnalyze();
+      }
+    });
+
+    // Pre-fill a friendly example (optional)
+    // inputEl.value = 'Handmade soy candles';
+
+    // Focus on load
+    window.addEventListener('load', () => inputEl.focus());
+  </script>
 </body>
 </html>
