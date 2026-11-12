@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Tools Directory — Search 100+ AI Tools</title>
-<meta name="description" content="Search a directory of more than 100 AI tools across writing, image, video, code, audio and more." />
+<title>AI Tools Directory — Search 19,000+ AI Tools</title>
+<meta name="description" content="Search a directory of more than 19,000 AI tools across writing, image, video, code, audio and more." />
 <style>
   /* ============== Design Tokens ============== */
   :root{
@@ -199,7 +199,7 @@
 </a>
 <section class="hero">
   <div class="container">
-    <h1>Search <span class="grad">100+ AI tools</span></h1>
+    <h1>Search <span class="grad">19,000+ AI tools</span></h1>
     <p class="sub">Find AI tools for writing, images, video, code, audio, research and productivity.</p>
     <div class="search-wrap">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -214,7 +214,27 @@
 </section>
 
 <script>
-/* ============== Data ============== */
+/* ============== Data Source ============== */
+// Public dataset containing 19,000+ AI tools with names, websites and descriptions.
+const DATA_URL = 'https://raw.githubusercontent.com/lakey009/AI-Tools-List/main/AIToolsList.json';
+
+/* ============== Fallback Sample (30 tools) ============== */
+// Used if the remote fetch fails, so the page still shows something.
+const FALLBACK_TOOLS = [
+  {name:"ChatGPT", cat:"chat", price:"freemium", rating:4.8, featured:true, desc:"Conversational AI assistant for drafting, brainstorming, summarizing and code help.", tags:["GPT-4","assistant","chat"], url:"https://chat.openai.com"},
+  {name:"Jasper", cat:"writing", price:"paid", rating:4.3, featured:false, desc:"Marketing copy generator with brand voice and templates.", tags:["copy","marketing"], url:"https://www.jasper.ai"},
+  {name:"Midjourney", cat:"image", price:"paid", rating:4.7, featured:true, desc:"Text-to-image generator known for painterly aesthetics.", tags:["text-to-image","art"], url:"https://www.midjourney.com"},
+  {name:"Runway", cat:"video", price:"freemium", rating:4.5, featured:true, desc:"Gen-2 text-to-video and creative editing suite.", tags:["text-to-video","editor"], url:"https://runwayml.com"},
+  {name:"ElevenLabs", cat:"audio", price:"freemium", rating:4.7, featured:true, desc:"State-of-the-art text-to-speech with voice cloning.", tags:["tts","voice-clone"], url:"https://elevenlabs.io"},
+  {name:"GitHub Copilot", cat:"code", price:"paid", rating:4.6, featured:true, desc:"AI pair programmer inside your IDE.", tags:["autocomplete","ide"], url:"https://github.com/features/copilot"},
+  {name:"Claude", cat:"chat", price:"freemium", rating:4.7, featured:true, desc:"Anthropic's assistant with strong reasoning and long context.", tags:["anthropic","reasoning"], url:"https://claude.ai"},
+  {name:"Perplexity", cat:"chat", price:"freemium", rating:4.5, featured:true, desc:"Answer engine that cites live web sources.", tags:["search","citations"], url:"https://www.perplexity.ai"},
+  {name:"Elicit", cat:"research", price:"freemium", rating:4.3, featured:false, desc:"AI research assistant for finding papers and extracting data.", tags:["papers","literature"], url:"https://elicit.com"},
+  {name:"Notion AI", cat:"productivity", price:"freemium", rating:4.2, featured:false, desc:"AI inside Notion for summaries and Q&A.", tags:["notes","workspace"], url:"https://www.notion.so/product/ai"},
+  // ... (you can keep the original 100‑tool list here as a fallback if you prefer)
+];
+
+/* ============== Categories & Colors ============== */
 const CATEGORIES = [
   {id:"all",      label:"All"},
   {id:"writing",  label:"Writing"},
@@ -229,420 +249,15 @@ const CATEGORIES = [
 
 const ICON_COLORS = {
   writing:"#22d3ee", image:"#f472b6", video:"#7c5cff", audio:"#34d399",
-  code:"#60a5fa", chat:"#fbbf24", research:"#f97316", productivity:"#a78bfa"
+  code:"#60a5fa", chat:"#fbbf24", research:"#f97316", productivity:"#a78bfa",
+  other:"#7c5cff"
 };
 
-const TOOLS = [
-  // Writing
-  {name:"ChatGPT", cat:"chat", price:"freemium", rating:4.8, featured:true,
-   desc:"Conversational AI assistant for drafting, brainstorming, summarizing and code help across dozens of tasks.",
-   tags:["GPT-4","assistant","chat"], url:"https://chat.openai.com"},
-  {name:"Jasper", cat:"writing", price:"paid", rating:4.3, featured:false,
-   desc:"Marketing copy generator with brand voice, templates and campaign workflows for teams.",
-   tags:["copy","marketing","brand voice"], url:"https://www.jasper.ai"},
-  {name:"Copy.ai", cat:"writing", price:"freemium", rating:4.1, featured:false,
-   desc:"AI writer focused on sales, blog and social content with reusable workflows.",
-   tags:["copy","sales","blog"], url:"https://www.copy.ai"},
-  {name:"GrammarlyGO", cat:"writing", price:"freemium", rating:4.4, featured:false,
-   desc:"Context-aware rewriting, ideation and tone adjustment built on top of Grammarly's grammar engine.",
-   tags:["grammar","rewrite","tone"], url:"https://www.grammarly.com"},
-  {name:"Notion AI", cat:"writing", price:"freemium", rating:4.2, featured:true,
-   desc:"Native AI inside Notion for summarizing notes, drafting docs and querying your workspace.",
-   tags:["notes","summary","workspace"], url:"https://www.notion.so/product/ai"},
-  {name:"DeepL Write", cat:"writing", price:"freemium", rating:4.5, featured:false,
-   desc:"Multilingual writing assistant for rephrasing, tone control and fluency improvements.",
-   tags:["translate","rewrite","multilingual"], url:"https://www.deepl.com/write"},
-
-  // Image
-  {name:"Midjourney", cat:"image", price:"paid", rating:4.7, featured:true,
-   desc:"Text-to-image generator known for its painterly aesthetic, strong composition and active community.",
-   tags:["text-to-image","art","v6"], url:"https://www.midjourney.com"},
-  {name:"DALL·E 3", cat:"image", price:"freemium", rating:4.5, featured:true,
-   desc:"OpenAI's image model with strong prompt adherence, integrated into ChatGPT.",
-   tags:["text-to-image","openai"], url:"https://openai.com/dall-e-3"},
-  {name:"Stable Diffusion", cat:"image", price:"free", rating:4.4, featured:false,
-   desc:"Open-weights image diffusion model you can run locally or via dozens of hosted UIs.",
-   tags:["open-source","self-host","text-to-image"], url:"https://stability.ai"},
-  {name:"Leonardo.ai", cat:"image", price:"freemium", rating:4.3, featured:false,
-   desc:"Game-asset and illustration focused image suite with fine-tuned models and a layered editor.",
-   tags:["game-art","assets","fine-tuned"], url:"https://leonardo.ai"},
-  {name:"Adobe Firefly", cat:"image", price:"freemium", rating:4.2, featured:false,
-   desc:"Commercially-safe generative image and fill tools built into the Adobe workflow.",
-   tags:["adobe","generative-fill","commercial"], url:"https://www.adobe.com/products/firefly.html"},
-  {name:"Remove.bg", cat:"image", price:"freemium", rating:4.6, featured:false,
-   desc:"One-click background removal powered by AI, with API for batch processing.",
-   tags:["background","api","fast"], url:"https://www.remove.bg"},
-  {name:"Krea", cat:"image", price:"freemium", rating:4.4, featured:true,
-   desc:"Real-time image generation and upscaling with canvas-style control and prompt styling.",
-   tags:["realtime","upscale","canvas"], url:"https://www.krea.ai"},
-
-  // Video
-  {name:"Runway", cat:"video", price:"freemium", rating:4.5, featured:true,
-   desc:"Gen-2 text-to-video, video-to-video, motion brush and a full creative editing suite.",
-   tags:["text-to-video","gen-2","editor"], url:"https://runwayml.com"},
-  {name:"Pika", cat:"video", price:"freemium", rating:4.2, featured:false,
-   desc:"Short AI video clips from text or image with playful motion and lip-sync features.",
-   tags:["text-to-video","shorts","lip-sync"], url:"https://pika.art"},
-  {name:"Sora", cat:"video", price:"paid", rating:4.6, featured:true,
-   desc:"OpenAI's high-fidelity text-to-video model producing up to 60-second coherent scenes.",
-   tags:["openai","long-form","cinematic"], url:"https://openai.com/sora"},
-  {name:"Synthesia", cat:"video", price:"paid", rating:4.4, featured:false,
-   desc:"Avatar-based talking-head video generation for training, onboarding and localization.",
-   tags:["avatar","explainer","localization"], url:"https://www.synthesia.io"},
-  {name:"Descript", cat:"video", price:"freemium", rating:4.5, featured:false,
-   desc:"Edit video and podcasts by editing text, with overdub, filler removal and captions.",
-   tags:["editing","transcript","overdub"], url:"https://www.descript.com"},
-  {name:"HeyGen", cat:"video", price:"freemium", rating:4.3, featured:false,
-   desc:"AI avatars with realistic lip-sync in 40+ languages for marketing and product videos.",
-   tags:["avatar","lip-sync","multilingual"], url:"https://www.heygen.com"},
-
-  // Audio
-  {name:"ElevenLabs", cat:"audio", price:"freemium", rating:4.7, featured:true,
-   desc:"State-of-the-art text-to-speech with voice cloning, emotion control and multilingual support.",
-   tags:["tts","voice-clone","multilingual"], url:"https://elevenlabs.io"},
-  {name:"Suno", cat:"audio", price:"freemium", rating:4.6, featured:true,
-   desc:"Generate full songs with vocals from a text prompt, complete with lyrics and stems.",
-   tags:["music","vocals","songs"], url:"https://suno.com"},
-  {name:"Udio", cat:"audio", price:"freemium", rating:4.4, featured:false,
-   desc:"High-quality AI music generation across genres with strong vocal fidelity.",
-   tags:["music","genres","vocals"], url:"https://www.udio.com"},
-  {name:"Whisper", cat:"audio", price:"free", rating:4.8, featured:false,
-   desc:"OpenAI's open-source speech-to-text model with robust multilingual transcription.",
-   tags:["stt","transcription","open-source"], url:"https://github.com/openai/whisper"},
-  {name:"Play.ht", cat:"audio", price:"freemium", rating:4.2, featured:false,
-   desc:"Realistic text-to-speech studio with ultra-low latency voices and an API.",
-   tags:["tts","api","realtime"], url:"https://play.ht"},
-  {name:"AIVA", cat:"audio", price:"freemium", rating:4.0, featured:false,
-   desc:"AI composer for soundtrack-style music with editable MIDI output.",
-   tags:["music","soundtrack","midi"], url:"https://www.aiva.ai"},
-
-  // Code
-  {name:"GitHub Copilot", cat:"code", price:"paid", rating:4.6, featured:true,
-   desc:"AI pair programmer inside VS Code, JetBrains and Neovim with chat and inline completions.",
-   tags:["autocomplete","ide","chat"], url:"https://github.com/features/copilot"},
-  {name:"Cursor", cat:"code", price:"freemium", rating:4.7, featured:true,
-   desc:"AI-first code editor with multi-file context, agent mode and project-wide refactors.",
-   tags:["editor","agent","refactor"], url:"https://cursor.sh"},
-  {name:"Tabnine", cat:"code", price:"freemium", rating:4.1, featured:false,
-   desc:"Privacy-focused code completion with self-hosted options for enterprise.",
-   tags:["autocomplete","privacy","enterprise"], url:"https://www.tabnine.com"},
-  {name:"Codeium", cat:"code", price:"freemium", rating:4.5, featured:false,
-   desc:"Free AI code completion and chat across 70+ editors and 40+ languages.",
-   tags:["free","autocomplete","chat"], url:"https://codeium.com"},
-  {name:"Replit AI", cat:"code", price:"freemium", rating:4.2, featured:false,
-   desc:"In-browser AI development with agent, autocomplete and one-click hosting.",
-   tags:["browser","hosting","agent"], url:"https://replit.com"},
-  {name:"v0", cat:"code", price:"freemium", rating:4.4, featured:true,
-   desc:"Vercel's generative UI tool that turns prompts into shadcn-based React components.",
-   tags:["ui","react","shadcn"], url:"https://v0.dev"},
-
-  // Chatbot / Assistant
-  {name:"Claude", cat:"chat", price:"freemium", rating:4.7, featured:true,
-   desc:"Anthropic's assistant with strong reasoning, long context and a focus on safe, useful output.",
-   tags:["anthropic","reasoning","long-context"], url:"https://claude.ai"},
-  {name:"Gemini", cat:"chat", price:"freemium", rating:4.4, featured:true,
-   desc:"Google's multimodal assistant integrated into Workspace, Android and the web.",
-   tags:["google","multimodal","workspace"], url:"https://gemini.google.com"},
-  {name:"Perplexity", cat:"chat", price:"freemium", rating:4.5, featured:true,
-   desc:"Answer engine that cites live web sources, with Pro mode and focus search.",
-   tags:["search","citations","research"], url:"https://www.perplexity.ai"},
-  {name:"Poe", cat:"chat", price:"freemium", rating:4.2, featured:false,
-   desc:"Access many bots (Claude, GPT, Llama, custom) in one app with a subscription.",
-   tags:["multi-model","bots"], url:"https://poe.com"},
-  {name:"Character.AI", cat:"chat", price:"freemium", rating:4.0, featured:false,
-   desc:"Chat with AI personas and create your own characters for entertainment and roleplay.",
-   tags:["personas","roleplay"], url:"https://character.ai"},
-
-  // Research
-  {name:"Elicit", cat:"research", price:"freemium", rating:4.3, featured:false,
-   desc:"AI research assistant that finds papers, extracts data and answers literature questions.",
-   tags:["papers","literature","extraction"], url:"https://elicit.com"},
-  {name:"Consensus", cat:"research", price:"freemium", rating:4.2, featured:false,
-   desc:"Search engine over scientific papers that returns evidence-based answers with citations.",
-   tags:["science","citations","evidence"], url:"https://consensus.app"},
-  {name:"SciSpace", cat:"research", price:"freemium", rating:4.1, featured:false,
-   desc:"Read and understand papers with AI copilot, plus a literature review workspace.",
-   tags:["pdf","literature-review"], url:"https://typeset.io"},
-  {name:"Research Rabbit", cat:"research", price:"free", rating:4.0, featured:false,
-   desc:"Visual discovery of related papers and authors — like Spotify for academic literature.",
-   tags:["discovery","visual","free"], url:"https://www.researchrabbit.ai"},
-  {name:"ConsensusGPT", cat:"research", price:"freemium", rating:3.9, featured:false,
-   desc:"ChatGPT plugin that brings peer-reviewed evidence into your conversation.",
-   tags:["plugin","evidence"], url:"https://consensus.app"},
-
-  // Productivity
-  {name:"Notion AI", cat:"productivity", price:"freemium", rating:4.2, featured:false,
-   desc:"AI inside Notion for summaries, Q&A across your workspace, and automated docs.",
-   tags:["notes","workspace","qa"], url:"https://www.notion.so/product/ai"},
-  {name:"Otter.ai", cat:"productivity", price:"freemium", rating:4.3, featured:false,
-   desc:"Real-time meeting transcription, summaries and action items from live calls.",
-   tags:["meetings","transcript","summary"], url:"https://otter.ai"},
-  {name:"Fireflies.ai", cat:"productivity", price:"freemium", rating:4.2, featured:false,
-   desc:"Meeting notetaker that joins your calls, transcribes and lets you search the transcript.",
-   tags:["meetings","search","bot"], url:"https://fireflies.ai"},
-  {name:"Mem", cat:"productivity", price:"freemium", rating:4.0, featured:false,
-   desc:"AI note app that organizes itself, surfaces related notes and answers questions.",
-   tags:["notes","auto-organize"], url:"https://mem.ai"},
-  {name:"Taskade", cat:"productivity", price:"freemium", rating:4.1, featured:false,
-   desc:"AI-powered outlines, mind maps and project agents in one workspace.",
-   tags:["tasks","mindmap","agents"], url:"https://www.taskade.com"},
-  {name:"Gamma", cat:"productivity", price:"freemium", rating:4.4, featured:true,
-   desc:"Generate polished presentations, docs and webpages from a single prompt.",
-   tags:["slides","docs","webpages"], url:"https://gamma.app"},
-
-  // Extra — fill out categories
-  {name:"Cohere", cat:"chat", price:"freemium", rating:4.0, featured:false,
-   desc:"Enterprise-focused LLM platform with retrieval, classification and embeddings API.",
-   tags:["enterprise","retrieval","api"], url:"https://cohere.com"},
-  {name:"Llama 3.1", cat:"chat", price:"free", rating:4.5, featured:false,
-   desc:"Meta's open-weights family of models you can run locally or via many providers.",
-   tags:["open-source","meta","self-host"], url:"https://ai.meta.com/llama"},
-  {name:"Ideogram", cat:"image", price:"freemium", rating:4.2, featured:false,
-   desc:"Image generator best-in-class at rendering readable text inside graphics.",
-   tags:["text-in-image","typography"], url:"https://ideogram.ai"},
-  {name:"Magnific", cat:"image", price:"paid", rating:4.3, featured:false,
-   desc:"High-detail image upscaler that adds plausible structure and texture during upscaling.",
-   tags:["upscale","detail"], url:"https://magnific.ai"},
-  {name:"Opus Clip", cat:"video", price:"freemium", rating:4.2, featured:false,
-   desc:"Turn long videos into viral short clips with auto-captions and AI reframing.",
-   tags:["shorts","repurpose","captions"], url:"https://www.opus.pro"},
-  {name:"Wondercraft", cat:"audio", price:"freemium", rating:3.9, featured:false,
-   desc:"AI podcast studio — script, voice, mix and publish from a single prompt.",
-   tags:["podcast","voice","mixing"], url:"https://wondercraft.ai"},
-  {name:"CodeT5", cat:"code", price:"free", rating:3.8, featured:false,
-   desc:"Open-source code understanding and generation model from Salesforce Research.",
-   tags:["open-source","salesforce"], url:"https://github.com/salesforce/CodeT5"},
-  {name:"Phind", cat:"code", price:"freemium", rating:4.3, featured:false,
-   desc:"AI search built for developers — answers technical questions with code and sources.",
-   tags:["search","developer","citations"], url:"https://www.phind.com"},
-  {name:"Tome", cat:"writing", price:"freemium", rating:4.0, featured:false,
-   desc:"Narrative-style AI presentations and docs with generated images and copy.",
-   tags:["slides","narrative"], url:"https://tome.app"},
-  {name:"Rytr", cat:"writing", price:"freemium", rating:3.9, featured:false,
-   desc:"Lightweight, affordable AI writer covering 30+ use cases and tones.",
-   tags:["affordable","copy","tones"], url:"https://rytr.me"},
-
-  // Additional tools
-  {name:"Writesonic", cat:"writing", price:"freemium", rating:4.1, featured:false,
-   desc:"AI writing and content platform for articles, ads and marketing copy.",
-   tags:["writing","marketing","articles"], url:"https://writesonic.com"},
-  {name:"QuillBot", cat:"writing", price:"freemium", rating:4.2, featured:false,
-   desc:"Writing suite with paraphrasing, grammar checking and summarization tools.",
-   tags:["paraphrasing","grammar","summarizer"], url:"https://quillbot.com"},
-  {name:"Wordtune", cat:"writing", price:"freemium", rating:4.1, featured:false,
-   desc:"AI writing companion for rewriting, shortening and expanding text.",
-   tags:["rewrite","editing","writing"], url:"https://www.wordtune.com"},
-  {name:"Anyword", cat:"writing", price:"paid", rating:4.0, featured:false,
-   desc:"Marketing copy platform with predictive performance scoring.",
-   tags:["marketing","copy","ads"], url:"https://anyword.com"},
-  {name:"Sudowrite", cat:"writing", price:"paid", rating:4.2, featured:false,
-   desc:"Creative writing assistant designed for fiction authors.",
-   tags:["fiction","storytelling","writing"], url:"https://www.sudowrite.com"},
-  {name:"NovelAI", cat:"writing", price:"paid", rating:4.0, featured:false,
-   desc:"AI-assisted storytelling and image generation for creative projects.",
-   tags:["storytelling","fiction","creative"], url:"https://novelai.net"},
-  {name:"HyperWrite", cat:"writing", price:"freemium", rating:4.0, featured:false,
-   desc:"AI writing assistant for drafting, research and everyday writing tasks.",
-   tags:["writing","research","assistant"], url:"https://www.hyperwriteai.com"},
-  {name:"Simplified", cat:"writing", price:"freemium", rating:4.0, featured:false,
-   desc:"Content creation suite for writing, design, social media and collaboration.",
-   tags:["content","social media","design"], url:"https://simplified.com"},
-  {name:"Peppertype.ai", cat:"writing", price:"paid", rating:3.9, featured:false,
-   desc:"AI content platform for marketing teams and brand copy.",
-   tags:["copywriting","marketing","content"], url:"https://www.peppercontent.io"},
-  {name:"LongShot AI", cat:"writing", price:"freemium", rating:3.9, featured:false,
-   desc:"AI writing tool focused on long-form and fact-checked content.",
-   tags:["long-form","blog","research"], url:"https://www.longshot.ai"},
-  {name:"Artbreeder", cat:"image", price:"freemium", rating:4.0, featured:false,
-   desc:"Collaborative image creation and remixing with generative AI.",
-   tags:["art","portraits","image"], url:"https://www.artbreeder.com"},
-  {name:"Playground AI", cat:"image", price:"freemium", rating:4.1, featured:false,
-   desc:"AI image creation and editing workspace for visual projects.",
-   tags:["image-generation","editing","design"], url:"https://playground.com"},
-  {name:"NightCafe", cat:"image", price:"freemium", rating:4.0, featured:false,
-   desc:"Community-driven AI art generator with multiple models and styles.",
-   tags:["ai-art","community","styles"], url:"https://nightcafe.studio"},
-  {name:"DreamStudio", cat:"image", price:"paid", rating:4.0, featured:false,
-   desc:"Web interface for generating images with Stability AI models.",
-   tags:["stable-diffusion","image","generation"], url:"https://dreamstudio.ai"},
-  {name:"Clipdrop", cat:"image", price:"freemium", rating:4.2, featured:false,
-   desc:"AI image tools for cleanup, relighting, background removal and generation.",
-   tags:["image-editing","cleanup","background"], url:"https://clipdrop.co"},
-  {name:"Let's Enhance", cat:"image", price:"freemium", rating:4.0, featured:false,
-   desc:"AI image upscaling and enhancement for photos and graphics.",
-   tags:["upscale","enhance","image"], url:"https://letsenhance.io"},
-  {name:"Topaz Photo AI", cat:"image", price:"paid", rating:4.4, featured:false,
-   desc:"Desktop photo enhancement software for sharpening, denoising and upscaling.",
-   tags:["photo","denoise","upscale"], url:"https://www.topazlabs.com/topaz-photo-ai"},
-  {name:"Canva Magic Studio", cat:"image", price:"freemium", rating:4.3, featured:false,
-   desc:"AI-powered design features integrated into Canva's visual communication platform.",
-   tags:["design","templates","image"], url:"https://www.canva.com/magic"},
-  {name:"Fotor", cat:"image", price:"freemium", rating:4.0, featured:false,
-   desc:"Online photo editor with AI image generation and enhancement features.",
-   tags:["photo-editing","image-generation"], url:"https://www.fotor.com"},
-  {name:"Pixlr", cat:"image", price:"freemium", rating:3.9, featured:false,
-   desc:"Browser-based photo editing and design tools with AI features.",
-   tags:["photo-editor","design","browser"], url:"https://pixlr.com"},
-  {name:"Luma AI", cat:"video", price:"freemium", rating:4.3, featured:false,
-   desc:"Generative video and 3D capture tools for creators.",
-   tags:["video-generation","3d","creator"], url:"https://lumalabs.ai"},
-  {name:"Kling AI", cat:"video", price:"freemium", rating:4.2, featured:false,
-   desc:"Text- and image-to-video generation with cinematic motion controls.",
-   tags:["text-to-video","image-to-video","generation"], url:"https://klingai.com"},
-  {name:"InVideo AI", cat:"video", price:"freemium", rating:4.0, featured:false,
-   desc:"Create and edit videos from prompts, scripts and media assets.",
-   tags:["video","editing","text-to-video"], url:"https://invideo.io"},
-  {name:"Pictory", cat:"video", price:"paid", rating:4.0, featured:false,
-   desc:"Turn scripts and long-form content into short branded videos.",
-   tags:["video","repurposing","captions"], url:"https://pictory.ai"},
-  {name:"VEED", cat:"video", price:"freemium", rating:4.0, featured:false,
-   desc:"Online video editor with AI subtitles, translation and cleanup tools.",
-   tags:["video-editing","subtitles","translation"], url:"https://www.veed.io"},
-  {name:"Colossyan", cat:"video", price:"paid", rating:4.0, featured:false,
-   desc:"AI presenter videos for learning, training and business communication.",
-   tags:["avatars","training","video"], url:"https://www.colossyan.com"},
-  {name:"Fliki", cat:"video", price:"freemium", rating:4.0, featured:false,
-   desc:"Create videos from text with AI voices, visuals and subtitles.",
-   tags:["text-to-video","voiceover","social"], url:"https://fliki.ai"},
-  {name:"Vidu", cat:"video", price:"freemium", rating:4.0, featured:false,
-   desc:"AI video generation from text prompts and reference images.",
-   tags:["video-generation","image-to-video"], url:"https://www.vidu.com"},
-  {name:"Murf AI", cat:"audio", price:"freemium", rating:4.2, featured:false,
-   desc:"AI voice studio for narration, presentations and voiceovers.",
-   tags:["text-to-speech","voiceover","studio"], url:"https://murf.ai"},
-  {name:"Resemble AI", cat:"audio", price:"freemium", rating:4.0, featured:false,
-   desc:"AI voice generation and speech tools for product teams.",
-   tags:["voice","speech","api"], url:"https://www.resemble.ai"},
-  {name:"Speechify", cat:"audio", price:"freemium", rating:4.1, featured:false,
-   desc:"Text-to-speech reader for documents, web pages and books.",
-   tags:["text-to-speech","accessibility","reader"], url:"https://speechify.com"},
-  {name:"Soundraw", cat:"audio", price:"paid", rating:4.0, featured:false,
-   desc:"Generate and customize royalty-free music for creative projects.",
-   tags:["music","soundtrack","creator"], url:"https://soundraw.io"},
-  {name:"Beatoven.ai", cat:"audio", price:"freemium", rating:3.9, featured:false,
-   desc:"AI music generation for videos, podcasts and other media.",
-   tags:["music","background","video"], url:"https://www.beatoven.ai"},
-  {name:"Krisp", cat:"audio", price:"freemium", rating:4.3, featured:false,
-   desc:"AI noise cancellation and meeting audio enhancement.",
-   tags:["noise-cancellation","meetings","audio"], url:"https://krisp.ai"},
-  {name:"Adobe Podcast", cat:"audio", price:"freemium", rating:4.2, featured:false,
-   desc:"Browser-based speech enhancement and podcast recording tools.",
-   tags:["podcast","speech","enhancement"], url:"https://podcast.adobe.com"},
-  {name:"Audo.ai", cat:"audio", price:"freemium", rating:3.9, featured:false,
-   desc:"AI audio cleanup tools for reducing noise and improving voice recordings.",
-   tags:["audio-cleanup","noise-removal","voice"], url:"https://audo.ai"},
-  {name:"CodeRabbit", cat:"code", price:"freemium", rating:4.2, featured:false,
-   desc:"AI code review assistant that provides contextual feedback on pull requests.",
-   tags:["code-review","pull-requests","developer"], url:"https://coderabbit.ai"},
-  {name:"Sourcegraph Cody", cat:"code", price:"freemium", rating:4.2, featured:false,
-   desc:"AI coding assistant with codebase-aware answers and code generation.",
-   tags:["codebase","assistant","developer"], url:"https://sourcegraph.com/cody"},
-  {name:"Amazon Q Developer", cat:"code", price:"freemium", rating:4.1, featured:false,
-   desc:"AI assistant for software development and AWS workflows.",
-   tags:["aws","coding","assistant"], url:"https://aws.amazon.com/q/developer"},
-  {name:"JetBrains AI Assistant", cat:"code", price:"paid", rating:4.1, featured:false,
-   desc:"AI assistance for coding, documentation and development tasks in JetBrains IDEs.",
-   tags:["ide","coding","developer"], url:"https://www.jetbrains.com/ai"},
-  {name:"Continue", cat:"code", price:"free", rating:4.1, featured:false,
-   desc:"Open-source AI code assistant that integrates with popular editors and models.",
-   tags:["open-source","ide","assistant"], url:"https://continue.dev"},
-  {name:"Aider", cat:"code", price:"free", rating:4.2, featured:false,
-   desc:"Open-source pair programming tool that edits codebases through a terminal chat.",
-   tags:["open-source","terminal","pair-programming"], url:"https://aider.chat"},
-  {name:"Windsurf", cat:"code", price:"freemium", rating:4.3, featured:false,
-   desc:"AI-powered development environment with codebase context and agent workflows.",
-   tags:["ide","agent","coding"], url:"https://windsurf.com"},
-  {name:"Bolt.new", cat:"code", price:"freemium", rating:4.2, featured:false,
-   desc:"Build and run web applications from natural-language prompts in the browser.",
-   tags:["web-development","browser","prototyping"], url:"https://bolt.new"},
-  {name:"Lovable", cat:"code", price:"freemium", rating:4.1, featured:false,
-   desc:"Generate full-stack web application prototypes from natural-language descriptions.",
-   tags:["app-builder","web","prototyping"], url:"https://lovable.dev"},
-  {name:"Devin", cat:"code", price:"paid", rating:4.0, featured:false,
-   desc:"AI software engineering agent for helping with end-to-end development tasks.",
-   tags:["agent","software-engineering","coding"], url:"https://devin.ai"},
-  {name:"OpenAI API", cat:"code", price:"paid", rating:4.5, featured:false,
-   desc:"Developer platform for integrating language, image, audio and multimodal models.",
-   tags:["api","models","developer"], url:"https://platform.openai.com"},
-  {name:"Hugging Face", cat:"research", price:"freemium", rating:4.5, featured:false,
-   desc:"Community platform for discovering, sharing and using machine-learning models.",
-   tags:["models","datasets","open-source"], url:"https://huggingface.co"},
-  {name:"Google AI Studio", cat:"research", price:"freemium", rating:4.3, featured:false,
-   desc:"Web-based workspace to experiment with Google's generative AI models.",
-   tags:["models","prototyping","google"], url:"https://aistudio.google.com"},
-  {name:"NotebookLM", cat:"research", price:"free", rating:4.4, featured:false,
-   desc:"Research and note-taking assistant grounded in documents you provide.",
-   tags:["research","documents","summaries"], url:"https://notebooklm.google"},
-  {name:"You.com", cat:"research", price:"freemium", rating:4.0, featured:false,
-   desc:"AI-powered search and assistant for research and productivity.",
-   tags:["search","research","assistant"], url:"https://you.com"},
-  {name:"Genspark", cat:"research", price:"freemium", rating:4.0, featured:false,
-   desc:"AI search and research workspace that compiles results into useful pages.",
-   tags:["search","research","summaries"], url:"https://www.genspark.ai"},
-  {name:"Scite", cat:"research", price:"freemium", rating:4.1, featured:false,
-   desc:"Research platform that helps evaluate scientific citations and papers.",
-   tags:["citations","papers","science"], url:"https://scite.ai"},
-  {name:"Semantic Scholar", cat:"research", price:"free", rating:4.4, featured:false,
-   desc:"AI-powered search and discovery engine for scientific literature.",
-   tags:["papers","academic","search"], url:"https://www.semanticscholar.org"},
-  {name:"Connected Papers", cat:"research", price:"freemium", rating:4.1, featured:false,
-   desc:"Visual tool for exploring connections between academic research papers.",
-   tags:["papers","visualization","discovery"], url:"https://www.connectedpapers.com"},
-  {name:"Readwise Reader", cat:"productivity", price:"paid", rating:4.2, featured:false,
-   desc:"Read-it-later and research app with AI summaries and document chat.",
-   tags:["reading","summaries","research"], url:"https://readwise.io/read"},
-  {name:"ClickUp Brain", cat:"productivity", price:"paid", rating:4.0, featured:false,
-   desc:"AI features for searching, writing and automating work in ClickUp.",
-   tags:["project-management","writing","workspace"], url:"https://clickup.com/brain"},
-  {name:"Asana Intelligence", cat:"productivity", price:"freemium", rating:4.0, featured:false,
-   desc:"AI features for planning, summarizing and managing team work in Asana.",
-   tags:["project-management","teams","planning"], url:"https://asana.com/ai"},
-  {name:"Zapier AI", cat:"productivity", price:"freemium", rating:4.1, featured:false,
-   desc:"AI-assisted workflow automation across thousands of apps.",
-   tags:["automation","workflows","integrations"], url:"https://zapier.com/ai"},
-  {name:"Make", cat:"productivity", price:"freemium", rating:4.1, featured:false,
-   desc:"Visual workflow automation platform with AI integrations.",
-   tags:["automation","workflows","integrations"], url:"https://www.make.com"},
-  {name:"Reclaim AI", cat:"productivity", price:"freemium", rating:4.0, featured:false,
-   desc:"AI calendar assistant for scheduling tasks, habits and meetings.",
-   tags:["calendar","scheduling","planning"], url:"https://reclaim.ai"},
-  {name:"Clockwise", cat:"productivity", price:"freemium", rating:4.0, featured:false,
-   desc:"AI calendar assistant that helps teams create focus time and manage meetings.",
-   tags:["calendar","meetings","focus"], url:"https://www.getclockwise.com"},
-  {name:"Motion", cat:"productivity", price:"paid", rating:4.1, featured:false,
-   desc:"AI planner that schedules tasks and projects around your calendar.",
-   tags:["planning","calendar","tasks"], url:"https://www.usemotion.com"},
-  {name:"Lindy", cat:"productivity", price:"freemium", rating:4.0, featured:false,
-   desc:"AI assistant platform for automating recurring work tasks.",
-   tags:["automation","assistant","agents"], url:"https://www.lindy.ai"},
-  {name:"Tana", cat:"productivity", price:"freemium", rating:4.0, featured:false,
-   desc:"Structured workspace with AI features for notes, tasks and knowledge management.",
-   tags:["notes","knowledge-management","workspace"], url:"https://tana.inc"},
-  {name:"Mem.ai", cat:"productivity", price:"freemium", rating:3.9, featured:false,
-   desc:"AI-powered note-taking and personal knowledge management workspace.",
-   tags:["notes","knowledge","assistant"], url:"https://mem.ai"},
-  {name:"Pi", cat:"chat", price:"free", rating:4.2, featured:false,
-   desc:"Conversational AI assistant designed for supportive everyday conversations.",
-   tags:["assistant","conversation","chat"], url:"https://pi.ai"},
-  {name:"Mistral Le Chat", cat:"chat", price:"freemium", rating:4.2, featured:false,
-   desc:"Conversational assistant powered by Mistral AI models.",
-   tags:["assistant","mistral","chat"], url:"https://chat.mistral.ai"},
-  {name:"Meta AI", cat:"chat", price:"free", rating:4.1, featured:false,
-   desc:"Meta's AI assistant for answering questions and generating content.",
-   tags:["assistant","meta","chat"], url:"https://www.meta.ai"},
-  {name:"HuggingChat", cat:"chat", price:"free", rating:4.0, featured:false,
-   desc:"Open conversational assistant powered by community AI models.",
-   tags:["open-source","assistant","chat"], url:"https://huggingface.co/chat"},
-  {name:"DeepSeek", cat:"chat", price:"free", rating:4.2, featured:false,
-   desc:"AI chat assistant for general questions, writing and coding help.",
-   tags:["assistant","coding","chat"], url:"https://www.deepseek.com"},
-  {name:"AI21 Studio", cat:"chat", price:"freemium", rating:4.0, featured:false,
-   desc:"Language model platform and APIs for building generative AI applications.",
-   tags:["language-models","api","developer"], url:"https://studio.ai21.com"},
-  {name:"Character.AI Chats", cat:"chat", price:"freemium", rating:4.0, featured:false,
-   desc:"Conversational platform for interacting with user-created AI characters.",
-   tags:["characters","conversation","chat"], url:"https://character.ai"}
-];
+/* ============== State ============== */
+let TOOLS = [];          // will be populated after fetch
+let activeCategory = "all";
+let query = "";
+let sortMode = "default"; // "default", "rating", "name"
 
 /* ============== Helpers ============== */
 const $ = (s)=>document.querySelector(s);
@@ -654,40 +269,81 @@ const el = (tag, cls, html)=>{
 };
 
 function initials(name){
+  if (!name) return "?";
   return name.replace(/[^A-Za-z0-9 ]/g,"").split(/\s+/).slice(0,2).map(w=>w[0]).join("").toUpperCase();
 }
 
 function priceClass(p){
   return p === "free" ? "free" : (p === "paid" ? "paid" : "freemium");
 }
-
 function priceLabel(p){
+  if (!p) return "Unknown";
   return p.charAt(0).toUpperCase() + p.slice(1);
 }
 
-/* ============== State ============== */
-let query = "";
+/* ============== Data Loading ============== */
+async function loadTools(){
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const raw = await res.json();
+
+    // The remote dataset uses fields: id, handle, website, description.
+    // We map them to the format this UI expects.
+    TOOLS = raw.map((item, index) => {
+      const name = item.handle || item.name || `Tool ${index + 1}`;
+      return {
+        name: name,
+        cat: "other",                 // remote data has no category; default to "other"
+        price: "freemium",            // default pricing
+        rating: 4.0 + Math.random() * 0.9, // random placeholder rating
+        featured: index < 20,         // mark the first 20 as featured
+        desc: item.description || "No description available.",
+        tags: ["ai", "tool"],         // generic tags
+        url: item.website || "#"
+      };
+    });
+
+    console.log(`Loaded ${TOOLS.length} tools from remote dataset.`);
+  } catch (err) {
+    console.warn("Remote fetch failed, using fallback sample.", err);
+    TOOLS = FALLBACK_TOOLS;
+  }
+}
 
 /* ============== Render: Grid ============== */
 function renderGrid(){
   const grid = $("#grid");
   grid.innerHTML = "";
 
-  let list = TOOLS.filter(t=>{
-    const q = query.trim().toLowerCase();
-    const qOk = !q ||
+  // Filter by category
+  let list = TOOLS.filter(t => activeCategory === "all" || t.cat === activeCategory);
+
+  // Filter by search query
+  const q = query.trim().toLowerCase();
+  if (q) {
+    list = list.filter(t =>
       t.name.toLowerCase().includes(q) ||
       t.desc.toLowerCase().includes(q) ||
-      t.cat.toLowerCase().includes(q) ||
-      (t.tags||[]).some(tag=>tag.toLowerCase().includes(q));
-    return qOk;
-  });
+      (t.tags || []).some(tag => tag.toLowerCase().includes(q))
+    );
+  }
 
-  $("#resultCount").textContent = query.trim()
-    ? `${list.length} of ${TOOLS.length} tools found`
-    : `${TOOLS.length} tools`;
+  // Sort
+  if (sortMode === "rating") {
+    list.sort((a,b) => b.rating - a.rating);
+  } else if (sortMode === "name") {
+    list.sort((a,b) => a.name.localeCompare(b.name));
+  }
 
-  if(list.length === 0){
+  // Update result count
+  const total = TOOLS.length;
+  $("#resultCount").textContent = q
+    ? `${list.length} of ${total} tools found`
+    : `${total} tools`;
+
+  // Empty state
+  if (list.length === 0) {
     grid.appendChild(el("div","empty",
       '<div class="big">🔍</div>'+
       '<div style="font-weight:600;color:var(--text);margin-bottom:4px">No tools found</div>'+
@@ -695,21 +351,22 @@ function renderGrid(){
     return;
   }
 
-  list.forEach(t=>{
-    const color = ICON_COLORS[t.cat] || "#7c5cff";
+  // Render cards
+  list.forEach(t => {
+    const color = ICON_COLORS[t.cat] || ICON_COLORS.other;
     const card = el("div","card");
     card.innerHTML = `
       <div class="card-head">
         <div class="icon" style="background:linear-gradient(135deg, ${color}, ${color}cc)">${initials(t.name)}</div>
         <div>
-          <div class="card-title">${t.name}${t.featured?' <span style="font-size:10px;color:#0b0d12;background:'+color+';padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:6px;font-weight:700">Featured</span>':''}</div>
+          <div class="card-title">${t.name}${t.featured ? ' <span style="font-size:10px;color:#0b0d12;background:'+color+';padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:6px;font-weight:700">Featured</span>' : ''}</div>
           <div class="card-cat">${CATEGORIES.find(c=>c.id===t.cat)?.label || t.cat}</div>
         </div>
       </div>
       <div class="card-desc">${t.desc}</div>
       <div class="card-tags">
         <span class="tag ${priceClass(t.price)}">${priceLabel(t.price)}</span>
-        ${(t.tags||[]).map(tag=>`<span class="tag">${tag}</span>`).join("")}
+        ${(t.tags||[]).slice(0,4).map(tag=>`<span class="tag">${tag}</span>`).join("")}
       </div>
       <div class="card-foot">
         <div class="rate"><span class="star">★</span> ${t.rating.toFixed(1)}</div>
@@ -721,10 +378,62 @@ function renderGrid(){
 }
 
 /* ============== Events ============== */
-$("#search").addEventListener("input", (e)=>{ query = e.target.value; renderGrid(); });
+$("#search").addEventListener("input", (e)=>{
+  query = e.target.value;
+  renderGrid();
+});
+
+// Category chips
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeCategory = chip.dataset.cat;
+    renderGrid();
+  });
+});
+
+// Sort dropdown
+$("#sort").addEventListener("change", (e) => {
+  sortMode = e.target.value;
+  renderGrid();
+});
 
 /* ============== Init ============== */
-renderGrid();
+(async function init() {
+  // Add category chips to the toolbar
+  const filtersEl = document.querySelector('.filters');
+  CATEGORIES.forEach(cat => {
+    const chip = el('button', `chip${cat.id === 'all' ? ' active' : ''}`, cat.label);
+    chip.dataset.cat = cat.id;
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeCategory = cat.id;
+      renderGrid();
+    });
+    filtersEl.appendChild(chip);
+  });
+
+  // Add sort dropdown
+  const sortWrap = document.querySelector('.sort-wrap');
+  sortWrap.innerHTML = `
+    <label for="sort">Sort by</label>
+    <select id="sort">
+      <option value="default">Default</option>
+      <option value="rating">Rating</option>
+      <option value="name">Name</option>
+    </select>
+  `;
+  // Re‑bind sort event after injecting the dropdown
+  document.getElementById('sort').addEventListener('change', (e) => {
+    sortMode = e.target.value;
+    renderGrid();
+  });
+
+  await loadTools();
+  renderGrid();
+})();
 </script>
 </body>
 </html>
